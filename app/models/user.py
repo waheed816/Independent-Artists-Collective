@@ -13,6 +13,21 @@ class User(db.Model, UserMixin):
     username = db.Column(db.String(40), nullable=False, unique=True)
     email = db.Column(db.String(255), nullable=False, unique=True)
     hashed_password = db.Column(db.String(255), nullable=False)
+    artist = db.Column(db.Boolean, nullable=False, default=False)
+    name = db.Column(db.String(100), nullable=True)
+    origin = db.Column(db.String(100), nullable=True)
+    current_location = db.Column(db.String(100), nullable=True)
+    quote = db.Column(db.Text(500), nullable=True)
+    bio = db.Column(db.Text(1000), nullable=True)
+    phone = db.Column(db.String(12), nullable=True)
+    instagram = db.Column(db.String(40), nullable=True)
+    contact_email = db.Column(db.String(40), nullable=True)
+    artist_image_url = db.Column(db.Text(500), nullable=True)
+
+    art_pieces = db.relationship("Art_Piece", cascade="all, delete-orphan", back_populates="artist")
+
+    wishlist_user = db.relationship('Art_Piece', secondary='wishlist_items', back_populates='wishlist_art_piece')
+
 
     @property
     def password(self):
@@ -29,5 +44,14 @@ class User(db.Model, UserMixin):
         return {
             'id': self.id,
             'username': self.username,
-            'email': self.email
+            'email': self.email,
+            'artist': self.artist,
+            'origin': self.origin,
+            'current_location': self.current_location,
+            'quote': self.quote,
+            'bio': self.bio,
+            'phone': self.phone,
+            'instagram': self.instagram,
+            'contact_email': self.contact_email,
+            'artist_image_url': self.artist_image_url
         }
