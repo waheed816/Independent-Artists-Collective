@@ -1,20 +1,16 @@
 """empty message
 
-Revision ID: ffdc0a98111c
-Revises:
-Create Date: 2023-05-19 18:44:19.111780
+Revision ID: 8a2e56498918
+Revises: 
+Create Date: 2023-05-19 19:13:07.177746
 
 """
 from alembic import op
 import sqlalchemy as sa
 
-import os
-environment = os.getenv("FLASK_ENV")
-SCHEMA = os.environ.get("SCHEMA")
-
 
 # revision identifiers, used by Alembic.
-revision = 'ffdc0a98111c'
+revision = '8a2e56498918'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -31,12 +27,12 @@ def upgrade():
     sa.Column('name', sa.String(length=100), nullable=True),
     sa.Column('origin', sa.String(length=100), nullable=True),
     sa.Column('current_location', sa.String(length=100), nullable=True),
-    sa.Column('quote', sa.Text(length=500), nullable=True),
-    sa.Column('bio', sa.Text(length=1000), nullable=True),
+    sa.Column('quote', sa.String(length=500), nullable=True),
+    sa.Column('bio', sa.String(length=1000), nullable=True),
     sa.Column('phone', sa.String(length=12), nullable=True),
     sa.Column('instagram', sa.String(length=40), nullable=True),
     sa.Column('contact_email', sa.String(length=40), nullable=True),
-    sa.Column('artist_image_url', sa.Text(length=500), nullable=True),
+    sa.Column('artist_image_url', sa.String(length=500), nullable=True),
     sa.PrimaryKeyConstraint('id'),
     sa.UniqueConstraint('email'),
     sa.UniqueConstraint('username')
@@ -44,9 +40,9 @@ def upgrade():
     op.create_table('art_pieces',
     sa.Column('id', sa.Integer(), nullable=False),
     sa.Column('name', sa.String(length=200), nullable=False),
-    sa.Column('description', sa.Text(length=2000), nullable=False),
+    sa.Column('description', sa.String(length=2000), nullable=False),
     sa.Column('price', sa.Integer(), nullable=False),
-    sa.Column('art_image_url', sa.Text(length=500), nullable=False),
+    sa.Column('art_image_url', sa.String(length=500), nullable=False),
     sa.Column('artist_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['artist_id'], ['users.id'], ),
     sa.PrimaryKeyConstraint('id')
@@ -59,11 +55,6 @@ def upgrade():
     sa.PrimaryKeyConstraint('wishlist_user_id', 'wishlist_item_id')
     )
     # ### end Alembic commands ###
-    if environment == "production":
-        op.execute(f"ALTER TABLE users SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE art_pieces SET SCHEMA {SCHEMA};")
-        op.execute(f"ALTER TABLE wishlist_items SET SCHEMA {SCHEMA};")
-
 
 
 def downgrade():

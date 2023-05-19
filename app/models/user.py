@@ -17,12 +17,12 @@ class User(db.Model, UserMixin):
     name = db.Column(db.String(100), nullable=True)
     origin = db.Column(db.String(100), nullable=True)
     current_location = db.Column(db.String(100), nullable=True)
-    quote = db.Column(db.Text(500), nullable=True)
-    bio = db.Column(db.Text(1000), nullable=True)
+    quote = db.Column(db.String(500), nullable=True)
+    bio = db.Column(db.String(1000), nullable=True)
     phone = db.Column(db.String(12), nullable=True)
     instagram = db.Column(db.String(40), nullable=True)
     contact_email = db.Column(db.String(40), nullable=True)
-    artist_image_url = db.Column(db.Text(500), nullable=True)
+    artist_image_url = db.Column(db.String(500), nullable=True)
 
     art_pieces = db.relationship("Art_Piece", cascade="all, delete-orphan", back_populates="artist")
 

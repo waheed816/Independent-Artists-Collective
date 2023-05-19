@@ -9,9 +9,9 @@ class Art_Piece(db.Model):
 
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(200), nullable=False)
-    description = db.Column(db.Text(2000), nullable=False)
+    description = db.Column(db.String(2000), nullable=False)
     price = db.Column(db.Integer, nullable=False)
-    art_image_url = db.Column(db.Text(500), nullable=False)
+    art_image_url = db.Column(db.String(500), nullable=False)
     artist_id = db.Column(db.Integer, db.ForeignKey(add_prefix_for_prod('users.id')))
 
     artist = db.relationship("User", back_populates="art_pieces")
