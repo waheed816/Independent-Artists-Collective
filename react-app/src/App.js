@@ -5,6 +5,11 @@ import SignupFormPage from "./components/SignupFormPage";
 import LoginFormPage from "./components/LoginFormPage";
 import { authenticate } from "./store/session";
 import Navigation from "./components/Navigation";
+import LandingPage from "./components/LandingPage";
+import SingleArtDetailsPage from "./components/SingleArtDetailsPage";
+import ArtistDetailsPage from "./components/ArtistDetailsPage";
+import AllArtistsPage from "./components/AllArtistsPage";
+import WishlistItemsPage from "./components/WishlistItemsPage";
 
 function App() {
   const dispatch = useDispatch();
@@ -23,6 +28,21 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/art_pieces/wishlist/:userId">
+            <WishlistItemsPage />
+          </Route>
+          <Route path="/art_pieces/:artPieceId">
+            <SingleArtDetailsPage />
+          </Route>
+          <Route path="/artist/:artistId">
+            <ArtistDetailsPage />
+          </Route>
+          <Route path="/allArtists">
+            <AllArtistsPage />
+          </Route>
+          <Route path="/">
+            <LandingPage />
           </Route>
         </Switch>
       )}

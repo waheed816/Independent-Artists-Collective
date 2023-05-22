@@ -5,9 +5,6 @@ from sqlalchemy.sql import text
 def seed_wishlist_items():
 
     wishlist_items_data = [
-        {'wishlist_user_id': 1, 'wishlist_item_id': 1},
-        {'wishlist_user_id': 1, 'wishlist_item_id': 2},
-        {'wishlist_user_id': 1, 'wishlist_item_id': 3},
         {'wishlist_user_id': 2, 'wishlist_item_id': 4},
         {'wishlist_user_id': 2, 'wishlist_item_id': 5},
         {'wishlist_user_id': 2, 'wishlist_item_id': 6},

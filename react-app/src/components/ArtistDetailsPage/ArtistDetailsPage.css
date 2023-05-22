@@ -1,0 +1,29 @@
+.artist-details-page-container{
+  margin-bottom: 33px;
+  margin-left: 23px;
+}
+
+.artist-details-container {
+    display: flex;
+    gap: 23px;
+    margin-bottom: 55px;
+  }
+
+  .artist-details-info-container div:nth-child(even) {
+    padding-bottom: 23px;
+  }
+
+.artist-details-image{
+    display: flex;
+    max-width: 73vw;
+    max-height: 73vh;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3)
+}
+
+.artist-details-artworks-title{
+  margin-left: 23px;
+}
+
+.landing-page-art-image{
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.9);
+}

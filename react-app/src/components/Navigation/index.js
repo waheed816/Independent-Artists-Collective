@@ -10,7 +10,12 @@ function Navigation({ isLoaded }){
 	return (
 		<ul>
 			<li>
-				<NavLink exact to="/">Home</NavLink>
+				<NavLink exact to="/"><i class="fa-solid fa-palette"> WORCESTER ARTISTS UNITED</i></NavLink>
+			</li>
+			<li>
+				<NavLink to="/allArtists">
+				<i class="fa-solid fa-paintbrush"> VIEW ALL ARTISTS</i>
+				</NavLink>
 			</li>
 			{isLoaded && (
 				<li>

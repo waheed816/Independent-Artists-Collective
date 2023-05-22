@@ -1,0 +1,68 @@
+.art-info-loading {
+    display: flex;
+    color: blue;
+    margin-left: 50%;
+    margin-right: 50%;
+    justify-content: center;
+    margin-top: 200px;
+    font-size: 31px;
+}
+
+.landing-page-container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+
+}
+
+.landing-page-art-piece-card {
+    width: 15%;
+    max-width: 23%;
+    padding: 17px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    flex: 1 1 calc(15.33% - 10px);
+    margin: 5px;
+}
+
+.landing-page-art-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.landing-page-art-piece-artist-info {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    width: 100%;
+    justify-content: flex-start;
+    padding-left: 5px;
+}
+
+.landing-page-artist-image-container {
+    height: 75px;
+    width: 45px;
+}
+
+
+.landing-page-artist-image {
+    margin-right: 5px;
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: fill;
+    border-radius: 50%;
+    margin-top: 13px;
+}
+
+.landing-page-artist-name {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    margin-left: 7px;
+}
+
+.landing-page-artist-navlink{
+    text-decoration: none;
+}
