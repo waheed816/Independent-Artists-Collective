@@ -1,9 +1,13 @@
 import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 import session from './session'
+import allArtPiecesReducer from './art_pieces';
+import allArtistsReducer from './artists';
 
 const rootReducer = combineReducers({
   session,
+  art_pieces: allArtPiecesReducer,
+  artists: allArtistsReducer
 });
 
 

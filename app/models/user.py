@@ -26,7 +26,7 @@ class User(db.Model, UserMixin):
 
     art_pieces = db.relationship("Art_Piece", cascade="all, delete-orphan", back_populates="artist")
 
-    wishlist_user = db.relationship('Art_Piece', secondary='wishlist_items', back_populates='wishlist_art_piece')
+    wishlist_items = db.relationship('Art_Piece', secondary='wishlist_items', back_populates='wishlist_user')
 
 
     @property
@@ -46,6 +46,7 @@ class User(db.Model, UserMixin):
             'username': self.username,
             'email': self.email,
             'artist': self.artist,
+            'name': self.name,
             'origin': self.origin,
             'current_location': self.current_location,
             'quote': self.quote,
@@ -53,5 +54,6 @@ class User(db.Model, UserMixin):
             'phone': self.phone,
             'instagram': self.instagram,
             'contact_email': self.contact_email,
-            'artist_image_url': self.artist_image_url
+            'artist_image_url': self.artist_image_url,
+            'wishlist_items': [wishlist.to_dict() for wishlist in self.wishlist_items]
         }

@@ -17,7 +17,7 @@ class Art_Piece(db.Model):
     artist = db.relationship("User", back_populates="art_pieces")
     # wishlist_art_piece = db.relationship("Wishlist_Item", cascade="all, delete-orphan", back_populates="art_piece")
     # user = db.relationship("User", back_populates="wishlist_user")
-    wishlist_art_piece = db.relationship('User', secondary='wishlist_items', back_populates='wishlist_user')
+    wishlist_user = db.relationship('User', secondary='wishlist_items', back_populates='wishlist_items')
 
 
     def to_dict(self):
