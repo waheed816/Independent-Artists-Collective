@@ -1,30 +1,65 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
+
 import { NavLink } from "react-router-dom";
 import { thunkGetSingleArtPieceDetails } from "../../store/art_pieces";
+import { thunkGetUserWishlistArtPieces } from "../../store/art_pieces";
+import { thunkAddItemToUserWishlist } from "../../store/art_pieces";
+import OpenModalButton from "../OpenModalButton";
+import LoginFormModal from "../LoginFormModal";
+import SignupFormModal from "../SignupFormModal";
+import { useModal } from "../../context/Modal";
 import "./SingleArtDetailsPage.css"
 
 
 const SingleArtDetailsPage = () => {
 
     const dispatch = useDispatch();
+    const history = useHistory();
+
+
+    const { closeModal } = useModal();
 
     const { artPieceId } = useParams();
 
-    const artPieceDetails = useSelector((state) => state.art_pieces.singleArtPiece)
+    const user = useSelector((state) => state.session.user)
+    const userWishlistItems = Object.values(useSelector((state) => state.art_pieces.allArtPieces));
 
+    const userWishlistItemsId = userWishlistItems.map(item => item.id);
+
+    const artPieceDetails = useSelector((state) => state.art_pieces.singleArtPiece)
 
     const [isLoaded, setIsLoaded] = useState(false)
 
-    // console.log("ART PIECE DETAILS------->>>>", artPieceId, artPieceDetails)
+    let userIsArtist = false;
+
+    // console.log('ART PIECE DETAILS------->>', artPieceDetails)
+    // console.log("USER WISHLIST ITEMS IDs", userWishlistItemsId, artPieceId)
+
+    if(user && artPieceDetails.artist_id == user.id){
+        userIsArtist = true;
+    }
+
+    let userHasItemInWishlist = false;
+
+    if(userWishlistItemsId.includes(Number(artPieceId))){
+        userHasItemInWishlist = true;
+    }
+
+    const addToWishlist = async (userId, artPieceId) => {
+        await dispatch(thunkAddItemToUserWishlist(userId, Number(artPieceId)))
+        history.push(`/art_pieces/wishlist/${user.id}`)
+
+    }
 
 
     useEffect( () => {
 
         const fetchData = async () => {
             setIsLoaded(false);
+            if(user) await dispatch(thunkGetUserWishlistArtPieces(user.id))
             await dispatch(thunkGetSingleArtPieceDetails(artPieceId));
             setIsLoaded(true);
         };
@@ -64,7 +99,53 @@ const SingleArtDetailsPage = () => {
                             ${artPieceDetails.price.toLocaleString()}
                         </div>
                         <div className="art-piece-details-wishlist-status">
-                            <button>ADD TO WISHLIST</button>
+
+                            {!user &&
+                                <div>
+                                    <div>
+                                        <OpenModalButton
+                                            buttonText="LOGIN"
+                                            onItemClick={closeModal}
+                                            modalComponent={<LoginFormModal />}
+                                        />{' '}to add artwork to wishlist
+                                    </div>
+                                    <div>
+                                        <OpenModalButton
+                                            buttonText="SIGN UP"
+                                            onItemClick={closeModal}
+                                            modalComponent={<SignupFormModal />}
+                                        /> {' '}to create an account
+                                    </div>
+                                </div>
+                            }
+
+                            {user && userIsArtist &&
+                                <div>
+                                    <div>
+                                        <button>EDIT YOUR ARTWORK INFO</button>
+                                    </div>
+                                    <div>
+                                        <button>DELETE YOUR ARTWORK</button>
+                                    </div>
+                                </div>
+                            }
+
+                            {user && !userIsArtist && userHasItemInWishlist &&
+                                <div>
+                                    <NavLink to={`/art_pieces/wishlist/${user.id}`}>
+                                        <button>VIEW IN YOUR WISH LIST</button>
+                                    </NavLink>
+                                </div>
+                            }
+
+                            {user && !userIsArtist && !userHasItemInWishlist &&
+                                <div>
+                                    <button onClick={() => addToWishlist(user.id, artPieceId)}>
+                                        ADD TO WISHLIST
+                                    </button>
+                                </div>
+                            }
+
                         </div>
                     </div>
                 </div>

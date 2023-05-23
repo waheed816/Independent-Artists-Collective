@@ -3,6 +3,8 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { thunkGetUserWishlistArtPieces } from "../../store/art_pieces";
+import { authenticate } from "../../store/session";
+import { thunkDeleteItemFromUserWishlist } from "../../store/art_pieces";
 import './WishlistItemsPage.css'
 
 
@@ -13,12 +15,17 @@ const WishlistItemsPage = () => {
 
     const [isLoaded, setIsLoaded] = useState(false)
 
-    console.log("USER ID ----->>>>>", user.id)
+    // console.log("USER ID ----->>>>>", user.id)
+
+    const deleteFromWishlist =  async (userId, artPieceId) => {
+        await dispatch(thunkDeleteItemFromUserWishlist(userId, artPieceId))
+    }
 
     useEffect( () => {
 
         const fetchData = async () => {
             setIsLoaded(false);
+            await dispatch(authenticate());
             await dispatch(thunkGetUserWishlistArtPieces(user.id));
             setIsLoaded(true);
         };
@@ -35,7 +42,9 @@ const WishlistItemsPage = () => {
                 {allArtPiecesArray.map(art_piece => {
                     return (
                         <div key = {art_piece.id} className="landing-page-art-piece-card">
-                            <button className="remove-from-wishlist-button">REMOVE FROM WISHLIST</button>
+                            <button onClick={() => deleteFromWishlist(user.id, art_piece.id)} className="remove-from-wishlist-button">
+                                REMOVE FROM WISHLIST
+                            </button>
                             <NavLink to={`/art_pieces/${art_piece.id}`}>
                                 {/* <div className="landing-page-art-name">{`${art_piece.name}`}</div> */}
                                 <img title={art_piece.name} className="landing-page-art-image" src={art_piece.art_image_url} alt={`${art_piece.name}'s image unavailable`}></img>
