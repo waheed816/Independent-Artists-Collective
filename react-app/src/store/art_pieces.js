@@ -76,6 +76,35 @@ export const thunkGetUserWishlistArtPieces = (userId) => async (dispatch) => {
     }
 }
 
+export const thunkDeleteItemFromUserWishlist = (userId, artPieceId) => async (dispatch) => {
+    const response = await fetch(`/api/art_pieces/wishlist/${userId}/${artPieceId}`, {
+        method: 'DELETE',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    if(response.ok){
+        dispatch(thunkGetUserWishlistArtPieces(userId))
+    }
+}
+
+export const thunkAddItemToUserWishlist = (userId, artPieceId) => async (dispatch) => {
+
+    // console.log('ADD TO WISHLIST -------->>>', userId, artPieceId)
+
+    const response = await fetch(`/api/art_pieces/add_to_wishlist/${userId}/${artPieceId}`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    if(response.ok){
+        dispatch(thunkGetUserWishlistArtPieces(userId))
+    }
+}
+
 
 const initialState = { allArtPieces: {}, singleArtPiece: {}}
 
