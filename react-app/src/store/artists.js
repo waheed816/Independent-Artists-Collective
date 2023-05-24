@@ -1,5 +1,8 @@
+import { authenticate } from "./session"
+
 const GET_ALL_ARTISTS = 'artists/GET_ALL_ARTISTS'
 const GET_SINGLE_ARTIST = 'artists/GET_SINGLE_ARTIST'
+
 
 //ACTIONS
 
@@ -65,6 +68,24 @@ export const thunkGetSingleArtist = (artist_id) => async (dispatch) => {
         return singleArtist
     }
 
+}
+
+export const thunkUpdateUserArtistProfile = (userId, userArtistProfile) => async (dispatch) => {
+	const response = await fetch(`/api/artists/${userId}/UpdateUserArtistProfile`, {
+		method: 'PUT',
+		headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userArtistProfile)
+	})
+
+    if(response.ok){
+        const newArtistProfileDetails = await response.json();
+        console.log("NEW ARTIST PROFILE DETAILS THUNK---->>", newArtistProfileDetails)
+        dispatch(thunkGetSingleArtist(userId))
+        dispatch(authenticate())
+        return newArtistProfileDetails
+    }
 }
 
 const initialState = { allArtists: {}, singleArtist: {} }

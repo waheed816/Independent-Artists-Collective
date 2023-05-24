@@ -1,6 +1,6 @@
 from flask import Blueprint, jsonify
 from flask_login import login_required
-from app.models import User, Art_Piece, Wishlist_Item
+from app.models import User, Art_Piece, Wishlist_Item, db
 
 art_pieces_routes = Blueprint('art_pieces', __name__)
 
@@ -59,7 +59,7 @@ def get_all_art_pieces_by_artist(artist_id):
 
 
 @art_pieces_routes.route('/wishlist/<int:userId>')
-# @login_required
+@login_required
 def get_all_user_wishlist_art_pieces(userId):
 
     wishlist_user = User.query.get(userId)
@@ -77,3 +77,31 @@ def get_all_user_wishlist_art_pieces(userId):
         art_piece['artist_image'] = artist['artist_image_url']
 
     return wishlist_items_array
+
+
+
+@art_pieces_routes.route('/wishlist/<int:userId>/<int:artPieceId>', methods=['DELETE'])
+@login_required
+def delete_wishlist_item(userId, artPieceId):
+
+    db.session.query(Wishlist_Item).filter_by(wishlist_user_id=userId, wishlist_item_id=artPieceId).delete()
+    db.session.commit()
+
+    return {'message': 'successfully deleted'}
+
+
+@art_pieces_routes.route('/add_to_wishlist/<int:userId>/<int:artPieceId>', methods=['POST'])
+@login_required
+def add_item_to_user_wishlist(userId, artPieceId):
+
+    # print('ADD TO USER WISHLIST------>>>>>>>>>>>', userId, artPieceId)
+
+    # wishlist_item = Wishlist_Item(wishlist_user_id=userId, wishlist_item_id=artPieceId)
+
+    wishlist_item = Wishlist_Item.insert().values(wishlist_user_id=userId, wishlist_item_id=artPieceId)
+
+    db.session.execute(wishlist_item)
+    db.session.commit()
+
+
+    return {'message': 'added successfully'}
