@@ -37,16 +37,18 @@ const LandingPage = () => {
                                 {/* <div className="landing-page-art-name">{`${art_piece.name}`}</div> */}
                                 <img title={art_piece.name} className="landing-page-art-image" src={art_piece.art_image_url} alt={`${art_piece.name}'s image unavailable`}></img>
                             </NavLink>
-                            <NavLink to={`/artist/${art_piece.artist_id}`} className='landing-page-artist-navlink'>
                                 <div className="landing-page-art-piece-artist-info">
                                     <div className="landing-page-artist-image-container">
-                                        <img className="landing-page-artist-image" src={art_piece.artist_image} alt={`${art_piece.artist_name}'s image unavailable`}></img>
+                                        <NavLink to={`/artist/${art_piece.artist_id}`} className='landing-page-artist-navlink'>
+                                            <img className="landing-page-artist-image" src={art_piece.artist_image} alt={`${art_piece.artist_name}'s image unavailable`}></img>
+                                        </NavLink>
                                     </div>
                                     <div className="landing-page-artist-name">
-                                        <div className="landing-page-artist-name-display">{art_piece.artist_name}</div>
+                                        <NavLink to={`/artist/${art_piece.artist_id}`} className='landing-page-artist-navlink'>
+                                            <div className="landing-page-artist-name-display">{art_piece.artist_name}</div>
+                                        </NavLink>
                                     </div>
                                 </div>
-                            </NavLink>
 
                         </div>
                     )

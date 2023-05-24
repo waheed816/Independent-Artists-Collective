@@ -80,16 +80,18 @@ const SingleArtDetailsPage = () => {
                 </div>
                 <div className="art-piece-details-info-container">
                     <div>
-                        <NavLink to={`/artist/${artPieceDetails.artist_id}`} className='landing-page-artist-navlink'>
                             <div className="landing-page-art-piece-artist-info">
                                 <div className="landing-page-artist-image-container">
-                                    <img className="landing-page-artist-image" src={artPieceDetails.artist_image} alt={`${artPieceDetails.artist_name}'s image unavailable`}></img>
+                                    <NavLink to={`/artist/${artPieceDetails.artist_id}`} className='landing-page-artist-navlink'>
+                                        <img className="landing-page-artist-image" src={artPieceDetails.artist_image} alt={`${artPieceDetails.artist_name}'s image unavailable`}></img>
+                                    </NavLink>
                                 </div>
                                 <div className="landing-page-artist-name">
-                                    <div className="landing-page-artist-name-display">{artPieceDetails.artist_name}</div>
+                                    <NavLink to={`/artist/${artPieceDetails.artist_id}`} className='landing-page-artist-navlink'>
+                                        <div className="landing-page-artist-name-display">{artPieceDetails.artist_name}</div>
+                                    </NavLink>
                                 </div>
                             </div>
-                        </NavLink>
                         <div className="art-piece-details-description-container">
                             <div className="art-piece-details-description">{artPieceDetails.description}</div>
                         </div>

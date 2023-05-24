@@ -10,6 +10,7 @@ import SingleArtDetailsPage from "./components/SingleArtDetailsPage";
 import ArtistDetailsPage from "./components/ArtistDetailsPage";
 import AllArtistsPage from "./components/AllArtistsPage";
 import WishlistItemsPage from "./components/WishlistItemsPage";
+import ArtistProfileForm from "./components/ArtistProfileForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,6 +29,9 @@ function App() {
           </Route>
           <Route path="/signup">
             <SignupFormPage />
+          </Route>
+          <Route path="/artistProfileForm/:userId">
+            <ArtistProfileForm />
           </Route>
           <Route path="/art_pieces/wishlist/:userId">
             <WishlistItemsPage />
