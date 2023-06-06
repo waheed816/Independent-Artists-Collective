@@ -93,12 +93,23 @@ const SingleArtDetailsPage = () => {
                                 </div>
                             </div>
                         <div className="art-piece-details-description-container">
-                            <div className="art-piece-details-description">{artPieceDetails.description}</div>
+                            <div className="art-piece-details-description">
+                                {artPieceDetails.description.split('\n\n').map((paragraph, index) => (
+                                    <div key={index}>
+                                        {paragraph.split('\n').map((line, lineIndex) => (
+                                            <React.Fragment key={lineIndex}>
+                                                {line}
+                                                {lineIndex !== paragraph.split('\n').length - 1 && <br />}
+                                            </React.Fragment>
+                                        ))}
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                     <div className="art-piece-details-price-wishlist-container">
                         <div className="art-piece-details-price">
-                            ${artPieceDetails.price.toLocaleString()}
+                            {`Price: $${artPieceDetails.price.toLocaleString()}`}
                         </div>
                         <div className="art-piece-details-wishlist-status">
 

@@ -1,8 +1,48 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint, jsonify, request
 from flask_login import login_required
 from app.models import User, Art_Piece, Wishlist_Item, db
 
 art_pieces_routes = Blueprint('art_pieces', __name__)
+
+@art_pieces_routes.route('/postNewArtwork', methods=['POST'])
+@login_required
+def post_new_artwork():
+
+    new_artwork = request.get_json()
+
+    # print("NEW ARTWORK------>>>", new_artwork)
+
+    create_new_artwork = Art_Piece(
+        artist_id = new_artwork['userId'],
+        name = new_artwork['name'],
+        description = new_artwork['description'],
+        price = new_artwork['price'],
+        art_image_url = new_artwork['img1url']
+    )
+
+    db.session.add(create_new_artwork)
+    db.session.commit()
+
+    return create_new_artwork.to_dict()
+
+@art_pieces_routes.route('/editArtworkDetails/<int:artworkId>', methods=['PATCH'])
+@login_required
+def edit_artwork_details(artworkId):
+
+    art_piece_details = Art_Piece.query.get(artworkId)
+
+    edited_artwork_details = request.get_json()
+
+    art_piece_details.name = edited_artwork_details['name']
+    art_piece_details.description = edited_artwork_details['description']
+    art_piece_details.price = edited_artwork_details['price']
+    art_piece_details.art_image_url = edited_artwork_details['img1url']
+
+    db.session.commit()
+
+    return art_piece_details.to_dict()
+
+
 
 @art_pieces_routes.route('/')
 def get_all_art_pieces():

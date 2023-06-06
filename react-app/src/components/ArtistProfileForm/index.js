@@ -2,7 +2,7 @@ import React from "react";
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory, useParams } from 'react-router-dom';
-import { thunkUpdateUserArtistProfile } from "../../store/artists";
+import { thunkCreateUserArtistProfile } from "../../store/artists";
 import "./ArtistProfileForm.css"
 
 const ArtistProfileForm = () => {
@@ -40,7 +40,7 @@ const ArtistProfileForm = () => {
         if (!name.length) allErrors.name = "Name/Alias is required"
         if (!origin.length) allErrors.origin = "Origin is required";
         if (!currentLocation.length) allErrors.currentLocation = "Current Location is required";
-        if (description.length < 30) allErrors.description = "Your Story is required and needs to be a minimum of 30 characters";
+        if (description.length < 30) allErrors.description = "Your Story is required and must be a minimum of 30 characters";
         if (!quote.length) allErrors.quote = "Favorite Quote is required";
         if (!email) {
             allErrors.email = "Email address required";
@@ -77,10 +77,10 @@ const ArtistProfileForm = () => {
             if(!phone.length || !phone) userArtistProfile.phone = 'n/a'
 
 
-            const newArtistDetails = await dispatch(thunkUpdateUserArtistProfile(userId, userArtistProfile))
+            const newArtistDetails = await dispatch(thunkCreateUserArtistProfile(userId, userArtistProfile))
 
-            console.log('NEW ARTIST DETAILS------->>>', newArtistDetails)
-            console.log('USER ARTIST PROFILE------->>>', userArtistProfile)
+            // console.log('NEW ARTIST DETAILS------->>>', newArtistDetails)
+            // console.log('USER ARTIST PROFILE------->>>', userArtistProfile)
 
             history.push(`/artist/${userId}`)
         }

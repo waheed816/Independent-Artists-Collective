@@ -11,6 +11,9 @@ import ArtistDetailsPage from "./components/ArtistDetailsPage";
 import AllArtistsPage from "./components/AllArtistsPage";
 import WishlistItemsPage from "./components/WishlistItemsPage";
 import ArtistProfileForm from "./components/ArtistProfileForm";
+import PostArtworkForm from "./components/PostArtworkForm";
+import ManageProfileAndArtPage from "./components/ManageProfileAndArtPage";
+import EditArtworkForm from "./components/EditArtworkForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -36,8 +39,17 @@ function App() {
           <Route path="/art_pieces/wishlist/:userId">
             <WishlistItemsPage />
           </Route>
+          <Route path="/postArtworkForm/:userId">
+            <PostArtworkForm />
+          </Route>
+          <Route path="/editArtworkForm/:artworkId">
+            <EditArtworkForm />
+          </Route>
           <Route path="/art_pieces/:artPieceId">
             <SingleArtDetailsPage />
+          </Route>
+          <Route path="/artist/:artistId/manageProfileAndArt">
+            <ManageProfileAndArtPage />
           </Route>
           <Route path="/artist/:artistId">
             <ArtistDetailsPage />

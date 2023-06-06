@@ -20,19 +20,24 @@
 }
 
 .art-piece-details-image{
-    max-width: 51vw;
-    max-height: 51vw;
+    /* max-width: 45vw; */
+    max-height: 45vw;
     margin-bottom: 33px;
 }
 
 .art-piece-details-info-container{
- margin-bottom: 33px;
+    margin-bottom: 33px;
+    max-height: 45vw;
 }
 
 .art-piece-details-description-container{
     margin-top: 23px;
     margin-bottom: 23px;
     margin-right: 13px;
+}
+
+.art-piece-details-description > div {
+    margin-bottom: 1em;
 }
 
 .art-piece-details-description{
