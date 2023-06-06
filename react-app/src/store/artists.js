@@ -70,7 +70,7 @@ export const thunkGetSingleArtist = (artist_id) => async (dispatch) => {
 
 }
 
-export const thunkUpdateUserArtistProfile = (userId, userArtistProfile) => async (dispatch) => {
+export const thunkCreateUserArtistProfile = (userId, userArtistProfile) => async (dispatch) => {
 	const response = await fetch(`/api/artists/${userId}/UpdateUserArtistProfile`, {
 		method: 'PUT',
 		headers: {
@@ -81,12 +81,14 @@ export const thunkUpdateUserArtistProfile = (userId, userArtistProfile) => async
 
     if(response.ok){
         const newArtistProfileDetails = await response.json();
-        console.log("NEW ARTIST PROFILE DETAILS THUNK---->>", newArtistProfileDetails)
+        // console.log("NEW ARTIST PROFILE DETAILS THUNK---->>", newArtistProfileDetails)
         dispatch(thunkGetSingleArtist(userId))
         dispatch(authenticate())
         return newArtistProfileDetails
     }
 }
+
+
 
 const initialState = { allArtists: {}, singleArtist: {} }
 

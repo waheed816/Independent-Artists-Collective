@@ -1,0 +1,59 @@
+.edit-title{
+    padding-left: 1em;
+    padding-top: 1em;
+    margin-bottom: none;
+
+}
+
+.edit-artworks-container {
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.edit-piece-details-container {
+    display: flex;
+    flex-direction: row;
+}
+
+.edit-piece-details-info-container {
+    flex-grow: 1;
+    padding-left: 1.7em;
+
+}
+
+.edit-artworks-parent:nth-child(odd) {
+    background-color: lightsteelblue;
+    padding:1em 1em 2em 2.7em
+
+}
+
+.edit-artworks-parent:nth-child(even) {
+    padding:1em;
+    background-color: lightyellow;
+    padding:1em 1em 2em 2.7em
+}
+
+.edit-artworks-parent{
+    margin-right: 1.3em;
+}
+
+.edit-artist-details-container-parent{
+    margin-right: 1.3em;
+    background-color: lightyellow;
+    padding:1em 1em 0.01em 2.7em;
+
+}
+
+.edit-artist-details-container {
+    display: flex;
+    gap: 23px;
+    margin-bottom: 55px;
+
+ }
+
+
+ .edit-artist-details-info-container div:nth-child(even) {
+    padding-bottom: 23px;
+
+  }

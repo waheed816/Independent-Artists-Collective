@@ -19,7 +19,7 @@ function Navigation({ isLoaded }){
 			{isLoaded && !sessionUser &&
 				<li>
 					<OpenModalButton
-						buttonText="LOGIN TO POST YOUR ARTWORK"
+						buttonText="POST YOUR ARTWORK"
 						onItemClick={closeModal}
 						modalComponent={<LoginFormModal />}
 					/>
@@ -27,18 +27,18 @@ function Navigation({ isLoaded }){
 			}
 			{isLoaded && sessionUser && !sessionUser.artist &&
 				<li>
-					<NavLink exact to={`/artistProfileForm/${sessionUser.id}`}><i class="fa-solid fa-paint-roller"> CREATE YOUR ARTIST PROFILE </i></NavLink>
+					<NavLink exact to={`/artistProfileForm/${sessionUser.id}`}><i class="fa-solid fa-paint-roller"> POST YOUR ARTWORK </i></NavLink>
 				</li>
 			}
 			{isLoaded && sessionUser && sessionUser.artist &&
 				<li>
-					<NavLink exact to="/"><i class="fa-solid fa-paint-roller"> POST YOUR ARTWORK </i></NavLink>
+					<NavLink exact to={`/postArtworkForm/${sessionUser.id}`}><i class="fa-solid fa-paint-roller"> POST YOUR ARTWORK </i></NavLink>
 				</li>
 			}
 
 			<li>
 				<NavLink to="/allArtists">
-				<i class="fa-solid fa-paintbrush"> VIEW ALL ARTISTS</i>
+				<i className="fa-solid fa-paintbrush"> VIEW ALL ARTISTS</i>
 				</NavLink>
 			</li>
 			{isLoaded && (

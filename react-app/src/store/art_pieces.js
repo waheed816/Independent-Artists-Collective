@@ -32,6 +32,39 @@ const normalizeAllArtPieces = (all_art_pieces) => {
 
 //THUNKS
 
+export const thunkPostNewArtwork = (newArtwork) => async (dispatch) => {
+
+	const response = await fetch(`/api/art_pieces/postNewArtwork`, {
+		method: 'POST',
+		headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(newArtwork)
+	})
+    if(response.ok){
+        const single_art_piece_details = await response.json();
+        dispatch(thunkGetSingleArtPieceDetails(single_art_piece_details.id))
+        return single_art_piece_details;
+    }
+}
+
+export const thunkEditArtworkDetails = (artworkId, editedArtworkDetails) => async (dispatch) => {
+
+	const response = await fetch(`/api/art_pieces/editArtworkDetails/${artworkId}`, {
+		method: 'PATCH',
+		headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(editedArtworkDetails)
+	})
+    if(response.ok){
+        const single_art_piece_details = await response.json();
+        dispatch(thunkGetSingleArtPieceDetails(single_art_piece_details.id))
+        return single_art_piece_details;
+    }
+}
+
+
 export const thunkGetAllArtPieces = () => async (dispatch) => {
     const response = await fetch('/api/art_pieces/')
 
