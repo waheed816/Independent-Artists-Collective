@@ -42,6 +42,16 @@ def edit_artwork_details(artworkId):
 
     return art_piece_details.to_dict()
 
+@art_pieces_routes.route('/deleteArtpiece/<int:artworkId>', methods=['DELETE'])
+@login_required
+def delete_artpiece(artworkId):
+
+    art_piece = Art_Piece.query.get(artworkId)
+
+    db.session.delete(art_piece)
+    db.session.commit()
+
+    return {'message': 'Artpiece Successfully Deleted'}
 
 
 @art_pieces_routes.route('/')

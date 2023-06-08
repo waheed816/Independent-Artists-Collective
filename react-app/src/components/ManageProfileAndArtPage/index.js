@@ -5,6 +5,9 @@ import { useEffect, useState } from "react";
 import { NavLink } from "react-router-dom";
 import { thunkGetSingleArtist } from "../../store/artists";
 import { thunkGetAllArtPiecesByArtist } from "../../store/art_pieces";
+import OpenModalButton from "../OpenModalButton";
+import { useModal } from "../../context/Modal";
+import DeleteArtModal from "../DeleteArtModal";
 import "./ManageProfileAndArt.css"
 
 const ManageProfileAndArtPage = () => {
@@ -14,6 +17,8 @@ const ManageProfileAndArtPage = () => {
     const { artistId } = useParams();
 
     const history = useHistory();
+
+    const { closeModal } = useModal();
 
     const artistDetails = useSelector((state) => state.artists.singleArtist)
 
@@ -115,7 +120,13 @@ const ManageProfileAndArtPage = () => {
                                                     <button>EDIT ARTWORK DETAILS</button>
                                                 </NavLink>
                                                 <br></br>
-                                                <button>DELETE ARTWORK</button>
+                                                <div>
+                                                    <OpenModalButton
+                                                        buttonText="DELETE ARTWORK"
+                                                        onItemClick={closeModal}
+                                                        modalComponent={<DeleteArtModal artworkDetails = {artPieceDetails}/>}
+                                                    />
+                                                </div>
                                             </div>
                                     </div>
                                 </div>

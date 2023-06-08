@@ -64,6 +64,20 @@ export const thunkEditArtworkDetails = (artworkId, editedArtworkDetails) => asyn
     }
 }
 
+export const thunkDeleteArtpiece = (artworkId, artist_id) => async (dispatch) => {
+
+	const response = await fetch(`/api/art_pieces/deleteArtpiece/${artworkId}`, {
+		method: 'DELETE',
+		headers: {
+            'Content-Type': 'application/json'
+        },
+	})
+    if(response.ok){
+        dispatch(thunkGetAllArtPiecesByArtist(artist_id))
+        return
+    }
+}
+
 
 export const thunkGetAllArtPieces = () => async (dispatch) => {
     const response = await fetch('/api/art_pieces/')
