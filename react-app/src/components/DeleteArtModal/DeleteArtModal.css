@@ -1,0 +1,19 @@
+.delete-art-modal-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 1em;
+}
+
+
+.delete-art-modal-container div:not(:first-child) {
+    padding-top: 1em; /* Adjust the value as needed */
+  }
+
+
+.delete-art-piece-image{
+    max-height: 35vw;
+
+}
