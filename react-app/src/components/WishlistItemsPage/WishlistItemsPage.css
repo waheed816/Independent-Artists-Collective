@@ -1,7 +1,22 @@
 .remove-from-wishlist-button{
-    margin-bottom: 7px;
+    
+    align-self: flex-end;
 }
 
 .contact-artist-button{
     margin-top: 7px;
+}
+
+.wishlist-artist-info{
+    margin-bottom: 0.3em;
+}
+
+.wishlist-page-container{
+    padding-top: 0em;
+    margin-top: 0em;
+}
+
+.wishlist-page-title{
+    margin-top: 2em;
+    margin-left: 2em;
 }

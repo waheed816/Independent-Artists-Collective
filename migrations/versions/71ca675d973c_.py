@@ -2,7 +2,7 @@
 
 Revision ID: 8a2e56498918
 Revises:
-Create Date: 2023-06-06 16:27:05.277034
+Create Date: 2023-06-08 14:35:12.804978
 
 """
 from alembic import op
@@ -51,11 +51,12 @@ def upgrade():
     sa.PrimaryKeyConstraint('id')
     )
     op.create_table('wishlist_items',
-    sa.Column('wishlist_user_id', sa.Integer(), nullable=False),
-    sa.Column('wishlist_item_id', sa.Integer(), nullable=False),
+    sa.Column('wishlist_id', sa.Integer(), nullable=False),
+    sa.Column('wishlist_user_id', sa.Integer(), nullable=True),
+    sa.Column('wishlist_item_id', sa.Integer(), nullable=True),
     sa.ForeignKeyConstraint(['wishlist_item_id'], ['art_pieces.id'], ),
     sa.ForeignKeyConstraint(['wishlist_user_id'], ['users.id'], ),
-    sa.PrimaryKeyConstraint('wishlist_user_id', 'wishlist_item_id')
+    sa.PrimaryKeyConstraint('wishlist_id')
     )
     # ### end Alembic commands ###
     if environment == "production":

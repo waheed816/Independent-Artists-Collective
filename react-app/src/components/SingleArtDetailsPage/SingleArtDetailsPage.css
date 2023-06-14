@@ -8,42 +8,84 @@
     font-size: 31px;
 }
 
+/* .single-art-details-page-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+} */
+
 .art-piece-details-container{
     display: flex;
     flex-direction: row;
     gap: 13px;
-    margin-left: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1em solid black;
+    margin: 2em;
+    padding: 2em;
+
 }
 
-.art-piece-details-title{
-    margin-left: 13px;
-}
+
 
 .art-piece-details-image{
-    /* max-width: 45vw; */
-    max-height: 45vw;
-    margin-bottom: 33px;
+    max-width: 75vw;
+    max-height: 85vh;
+    /* margin-bottom: 33px; */
+
 }
+
+/* .single-art-details-page-container {
+    margin-left: 2em;
+    margin-right: 2em;
+
+} */
+
+
+
 
 .art-piece-details-info-container{
-    margin-bottom: 33px;
-    max-height: 45vw;
+    /* margin-bottom: 33px; */
+    /* max-width: 25vw; */
+    max-height: 85vh;
+
+    overflow-x: hidden;
+    /* justify-content: center; */
+
 }
 
-.art-piece-details-description-container{
-    margin-top: 23px;
-    margin-bottom: 23px;
-    margin-right: 13px;
-}
 
-.art-piece-details-description > div {
+
+/* .art-piece-details-description > div {
     margin-bottom: 1em;
-}
+} */
 
 .art-piece-details-description{
     margin-top: 7px;
 }
 
 .art-piece-details-wishlist-status{
-    margin-top: 7px;
+    margin-top: 13px;
+    padding-bottom: 7px;
+}
+
+
+@media (max-width: 1385px) {
+    .art-piece-details-container {
+      flex-direction: column;
+      max-width: 35vw;
+      /* justify-self: center; */
+    }
+
+    .single-art-details-page-container{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+
+
+    }
 }
