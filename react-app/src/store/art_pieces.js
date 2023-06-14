@@ -30,6 +30,15 @@ const normalizeAllArtPieces = (all_art_pieces) => {
     return normalizedArtPieces;
 }
 
+const normalizeWishlistArtPieces = (all_art_pieces) => {
+    const normalizedArtPieces = {};
+    all_art_pieces.forEach(art_piece => {
+        normalizedArtPieces[art_piece.wishlist_id] = art_piece;
+    })
+
+    return normalizedArtPieces;
+}
+
 //THUNKS
 
 export const thunkPostNewArtwork = (newArtwork) => async (dispatch) => {
@@ -117,7 +126,8 @@ export const thunkGetUserWishlistArtPieces = (userId) => async (dispatch) => {
 
     if(response.ok) {
         const art_pieces = await response.json();
-        const normalizedArtPieces = normalizeAllArtPieces(art_pieces)
+        // console.log("ART PIECES---->>", art_pieces)
+        const normalizedArtPieces = normalizeWishlistArtPieces(art_pieces)
         dispatch(actionGetAllArtPieces(normalizedArtPieces))
         return normalizedArtPieces
     }

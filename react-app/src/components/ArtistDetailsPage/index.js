@@ -67,6 +67,7 @@ const ArtistDetailsPage = () => {
                     </div>
                 </div>
             </div>
+            <div className='border-line'></div>
             <h2 className="artist-details-artworks-title">Artworks by {artistDetails.name}</h2>
             <div className="landing-page-container">
                 {allArtPiecesArray.map(art_piece => {

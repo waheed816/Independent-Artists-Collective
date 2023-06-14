@@ -198,7 +198,7 @@ const EditArtworkForm = () => {
                     <div className='border-line'></div>
 
                     <div className='submit-button-container'>
-                        <button type="submit" className='create-spot-button'>SUBMIT YOUR ARTWORK</button>
+                        <button type="submit" className='create-spot-button'>SUBMIT CHANGES</button>
                     </div>
                 </form>
             </div>

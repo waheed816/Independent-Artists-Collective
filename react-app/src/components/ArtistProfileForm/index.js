@@ -165,7 +165,7 @@ const ArtistProfileForm = () => {
                     <div className='border-line'></div>
                     <div className='section-inputs'>
                         <h3>FAVORITE QUOTE</h3>
-                        <p>A quote that inspires or defines you as an artist</p>
+                        <p>A quote that inspires you as an artist</p>
                         <div className='input-container'>
                             <input
                                 className='input-fields'

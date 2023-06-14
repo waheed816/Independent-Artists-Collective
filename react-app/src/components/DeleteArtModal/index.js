@@ -6,7 +6,7 @@ import "./DeleteArtModal.css"
 
 const DeleteArtModal = ({artworkDetails}) => {
 
-    console.log('ARTWORK DETAILS---->>>', artworkDetails)
+    // console.log('ARTWORK DETAILS---->>>', artworkDetails)
 
     const dispatch = useDispatch();
     const { closeModal } = useModal();
@@ -25,8 +25,8 @@ const DeleteArtModal = ({artworkDetails}) => {
 
     return(
         <div className="delete-art-modal-container">
-             <div>DELETE THIS ARTWORK?</div>
-             <div className="delete-art-piece-image-container">
+            <div>DELETE THIS ARTWORK?</div>
+            <div className="delete-art-piece-image-container">
                 <img className="delete-art-piece-image" src={artworkDetails.art_image_url} alt={`${artworkDetails.name}'s image unavailable`}></img>
             </div>
             <div>

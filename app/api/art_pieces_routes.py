@@ -118,13 +118,23 @@ def get_all_user_wishlist_art_pieces(userId):
 
     wishlist_items_array = wishlist_user_object['wishlist_items']
 
+    # print('WISHLIST ITEMS ARRAY--->>>', wishlist_items_array)
+
     for art_piece in wishlist_items_array:
+        wishlist_item_info = db.session.query(Wishlist_Item).filter_by(wishlist_user_id=userId, wishlist_item_id=art_piece['id']).first()
+        # print('WISHLIST ITEMS INFO----------------->>>', wishlist_item_info.wishlist_id)
+        #  = wishlist_item_info.wishlist_id
+        # print('ART PIECE------------>>>>>', art_piece)
+        art_piece['wishlist_id'] = wishlist_item_info.wishlist_id
         artist_id = art_piece['artist_id']
         artist_info = User.query.get(artist_id)
         artist = artist_info.to_dict()
         # print ('ARTIST---------------->>>', artist)
         art_piece['artist_name'] = artist['name']
         art_piece['artist_image'] = artist['artist_image_url']
+
+
+    # print('WISHLIST ITEMS ARRAY----------------->>>', wishlist_items_array['wishlist_item_id'])
 
     return wishlist_items_array
 
