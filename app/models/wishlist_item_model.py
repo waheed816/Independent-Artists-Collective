@@ -10,13 +10,14 @@ Wishlist_Item = db.Table('wishlist_items',
     # user = db.relationship("User", back_populates="wishlist_user")
 )
 
+if environment == "production":
+    Wishlist_Item.schema = SCHEMA
+
+
+
 # def to_dict(self):
 #     return{
 #         'wishlist_id': self.wishlist_id,
 #         'artist_id': self.artist_id,
 #         'art_piece_id': self.art_piece_id
 #     }
-
-
-if environment == "production":
-    Wishlist_Item.schema = SCHEMA

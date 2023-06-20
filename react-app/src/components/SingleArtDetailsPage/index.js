@@ -66,7 +66,7 @@ const SingleArtDetailsPage = () => {
 
         fetchData();
 
-    }, [dispatch]);
+    }, [dispatch, user]);
 
     return(
         (!isLoaded) ? <i className="fa-solid fa-palette art-info-loading">LOADING...</i> :
@@ -76,87 +76,95 @@ const SingleArtDetailsPage = () => {
                     <img className="art-piece-details-image" src={artPieceDetails.art_image_url} alt={`${artPieceDetails.name}'s image unavailable`}></img>
                 </div>
                 <div className="art-piece-details-info-container">
-                            <div className="landing-page-art-piece-artist-info">
-                                <div className="landing-page-artist-image-container">
-                                    <NavLink to={`/artist/${artPieceDetails.artist_id}`} className='landing-page-artist-navlink'>
-                                        <img className="landing-page-artist-image" src={artPieceDetails.artist_image} alt={`${artPieceDetails.artist_name}'s image unavailable`}></img>
-                                    </NavLink>
-                                </div>
-                                <div className="landing-page-artist-name">
-                                    <NavLink to={`/artist/${artPieceDetails.artist_id}`} className='landing-page-artist-navlink'>
-                                        <div className="landing-page-artist-name-display">{artPieceDetails.artist_name}</div>
-                                    </NavLink>
-                                </div>
-                            </div>
                     <div>
-                        <div className="art-piece-details-title">
-                                <h1>{artPieceDetails.name}</h1>
-                            <div>
-                                <div>
-                                    <OpenModalButton
-                                        buttonText="VIEW DESCRIPTION"
-                                        onItemClick={closeModal}
-                                        modalComponent={<ArtworkDescriptionModal artworkDetails={artPieceDetails}/>}
-                                    />
-                                </div>
+                        <div className="landing-page-art-piece-artist-info">
+                            <div className="landing-page-artist-image-container">
+                                <NavLink to={`/artist/${artPieceDetails.artist_id}`} className='landing-page-artist-navlink'>
+                                    <img className="landing-page-artist-image" src={artPieceDetails.artist_image} alt={`${artPieceDetails.artist_name}'s image unavailable`}></img>
+                                </NavLink>
+                            </div>
+                            <div className="landing-page-artist-name">
+                                <NavLink to={`/artist/${artPieceDetails.artist_id}`} className='landing-page-artist-navlink'>
+                                    <div className="landing-page-artist-name-display">{artPieceDetails.artist_name}</div>
+                                </NavLink>
                             </div>
                         </div>
 
+                            <div>
+                                <div className="art-piece-details-title">
+                                        <h1>{artPieceDetails.name}</h1>
+                                    <div>
+                                        <div>
+                                            <OpenModalButton
+                                                buttonText="VIEW DESCRIPTION"
+                                                onItemClick={closeModal}
+                                                modalComponent={<ArtworkDescriptionModal artworkDetails={artPieceDetails}/>}
+                                            />
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                                <h2 className="art-piece-details-price">
+                                    {`Price: $${artPieceDetails.price.toLocaleString()}`}
+                                </h2>
+                                <br></br>
                     </div>
-                    <div className="art-piece-details-price-wishlist-container">
-                        <div className="art-piece-details-price">
-                            {`Price: $${artPieceDetails.price.toLocaleString()}`}
-                        </div>
-                        <br></br>
-                        <div className="art-piece-details-wishlist-status">
+                    <div>
+                            <div className="art-piece-details-wishlist-status">
 
-                            {!user &&
-                                <div>
+                                {!user &&
                                     <div>
-                                        <OpenModalButton
-                                            buttonText="ADD TO WISHLIST"
-                                            onItemClick={closeModal}
-                                            modalComponent={<LoginFormModal />}
-                                        />
+                                        <div>
+                                            <OpenModalButton
+                                                buttonText="ADD TO WISHLIST"
+                                                onItemClick={closeModal}
+                                                modalComponent={<LoginFormModal />}
+                                            />
+                                        </div>
+
+                                    </div>
+                                }
+
+                                {/* {user && userIsArtist &&
+                                    <div>
+                                        <div>
+                                            <button>EDIT YOUR ARTWORK</button>
+                                        </div>
+                                        <div>
+                                            <button>DELETE YOUR ARTWORK</button>
+                                        </div>
+                                    </div>
+                                } */}
+
+                                {user && !userIsArtist && !userHasItemInWishlist &&
+                                    <div>
+                                        <button onClick={() => addToWishlist(user.id, artPieceId)}>
+                                            ADD TO WISHLIST
+                                        </button>
+                                    </div>
+                                }
+
+                                {user && !userIsArtist && userHasItemInWishlist &&
+                                    <div>
+                                        <NavLink to={`/art_pieces/wishlist/${user.id}`}>
+                                            <button>VIEW IN WISHLIST</button>
+                                        </NavLink>
+                                        {/* <div>
+
+                                            (ALREADY SAVED TO WISHLIST)
+                                        </div> */}
                                     </div>
 
-                                </div>
-                            }
+                                }
 
-                            {user && userIsArtist &&
-                                <div>
-                                    <div>
-                                        <button>EDIT YOUR ARTWORK INFO</button>
-                                    </div>
-                                    <div>
-                                        <button>DELETE YOUR ARTWORK</button>
-                                    </div>
-                                </div>
-                            }
 
-                            {user && !userIsArtist && userHasItemInWishlist &&
-                                <div>
-                                    <NavLink to={`/art_pieces/wishlist/${user.id}`}>
-                                        <button>VIEW IN WISHLIST</button>
-                                    </NavLink>
-                                    <div>
 
-                                        (ALREADY SAVED TO WISHLIST)
-                                    </div>
-                                </div>
+                            </div>
 
-                            }
+                            </div>
 
-                            {user && !userIsArtist && !userHasItemInWishlist &&
-                                <div>
-                                    <button onClick={() => addToWishlist(user.id, artPieceId)}>
-                                        ADD TO WISHLIST
-                                    </button>
-                                </div>
-                            }
 
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>

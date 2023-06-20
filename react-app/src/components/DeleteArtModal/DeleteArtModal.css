@@ -5,6 +5,9 @@
     justify-content: center;
     text-align: center;
     padding: 1em;
+
+    background-color: rgba(24, 24, 24);
+    border: solid 3px lightsteelblue;
 }
 
 

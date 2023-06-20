@@ -1,0 +1,30 @@
+
+.login-form-modal{
+    /* padding-top: -120px; */
+    background-color: rgba(24, 24, 24);
+    display: flex;
+    flex-direction: column;
+    border: solid 3px lightsteelblue;
+    padding-left: 21px;
+    padding-right: 21px;
+    padding-bottom: 27px;
+    align-items: center;
+    width: 193px;
+    border-radius: 17px;
+}
+
+.login-input-div{
+    padding-top: 5px;
+    padding-bottom: 13px;
+}
+
+.login-form-button{
+    padding-top: 13px;
+    padding-bottom: 7px;
+    display: flex;
+    justify-content: center;
+}
+
+.login-form-inputs{
+    width: 185px
+}

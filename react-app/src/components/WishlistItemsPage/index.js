@@ -42,7 +42,6 @@ const WishlistItemsPage = () => {
             <div className="landing-page-container wishlist-page-container">
                 {allArtPiecesArray.map(art_piece => {
                     return (
-
                         <div key = {art_piece.id} className="landing-page-art-piece-card">
                             <div className="wishlist-options-container">
                                 <div className="landing-page-art-piece-artist-info wishlist-artist-info">
@@ -55,7 +54,7 @@ const WishlistItemsPage = () => {
                                         <NavLink to={`/artist/${art_piece.artist_id}`} className='landing-page-artist-navlink'>
                                             <div className="landing-page-artist-name-display">{art_piece.artist_name}</div>
                                         </NavLink>
-                                        <button className="contact-artist-button">CONTACT ARTIST</button>
+                                        {/* <button className="contact-artist-button">CONTACT ARTIST</button> */}
                                     </div>
                                 </div>
                             </div>

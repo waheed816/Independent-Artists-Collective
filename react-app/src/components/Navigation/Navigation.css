@@ -1,7 +1,146 @@
 .profile-dropdown {
   position: absolute;
+  background-color: rgba(24, 24, 24);
+  border: 3px solid lightsteelblue;
+  padding: 13px;
+  border-radius: 13px;
+  /* margin-top: 3px; */
+  display: flex;
+  flex-direction: column;
+  width: max-content;
+  margin-right: 2.5em;
+  right: 0;
+  margin-top: 0;
+}
+
+body {
+  margin: 0;
+  font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: lightsteelblue;
+  background-color: rgb(24, 24, 24);
 }
 
 .hidden {
   display: none;
+}
+
+.navigation-bar-container{
+  display: flex;
+  justify-content: space-between;
+  /* background-color: lightsteelblue; */
+  /* margin: 1.5em; */
+  margin-left: 0.7em;
+  margin-right: 0.7em;
+  font-size: 1.5vw;
+  height: max-content;
+  align-items: center;
+
+}
+
+.edit-artwork-link{
+  color: lightsteelblue;
+  /* text-decoration: none; */
+}
+
+
+.navigation-border-line {
+  border-bottom: 0.3vw solid lightsteelblue;
+  /* padding-top: 0.5em; */
+  margin-bottom: 0.5em;
+
+}
+
+/* .navigation-border-line-top{
+  border-bottom: 0.5em solid black;
+  margin-bottom: 1.7em;
+} */
+
+.profile-button {
+  display: flex;
+  background-color: rgba(24, 24, 24);
+  color: lightsteelblue;
+  border: solid 0.1em;
+
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+  transform: translateY(0);
+  transition: transform 0.3s ease;
+  cursor: pointer;
+  margin:10px;
+  padding: 0.1em;
+  /* height: 100%; */
+
+  font-size:5.5vw;
+}
+
+.navigation-home-link-container{
+  display: flex;
+  flex-direction: column;
+  border: solid 0.1vw white;
+  padding: 0.4em;
+  border-radius: 1em;
+  /* font-size: 1.5vw; */
+  color: rgba(24, 24, 24);
+  /* max-width: 11.5vw; */
+  /* height: 100%; */
+  background-color: lightsteelblue;
+  transition: transform 0.7s ease;
+  background-image:   linear-gradient(45deg, transparent 20%, rgba(24, 24, 24) 25%, transparent 25%),
+                      linear-gradient(-45deg, transparent 20%, rgba(24, 24, 24) 25%, transparent 25%),
+                      linear-gradient(-45deg, transparent 75%, rgba(24, 24, 24) 80%, transparent 0);
+                      /* radial-gradient(rgba(24, 24, 24) .07em, transparent 13%); */
+  background-size: 13px 13px, 13px 13px;
+
+
+}
+
+.navigation-bar-login-button{
+  margin-bottom: 13px;
+  background-color: red;
+}
+
+
+
+.navigation-home-link-container:hover{
+  transform: scale(1.07);
+}
+
+.navigation-home-link-container:active{
+  transform: scale(0.9);
+}
+
+.navigation-bar-right-side{
+  display: flex;
+  /* gap: 13px */
+
+}
+
+.second-to-right-side-div{
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  justify-content: center;
+  gap:3px;
+}
+
+.second-to-right-side-div button {
+  /* margin-top: 3px; */
+  width: 100%;
+  display: flex;
+  height: 100%;
+  justify-content: center;
+}
+
+.navigation-view-all-artists{
+  /* font-size: 100%; */
+  padding-top: 5px;
+  color: lightsteelblue;
+}
+
+
+/* .navigation-home-link{
+  color: black;
+} */
+
+li {
+  list-style: none;
 }

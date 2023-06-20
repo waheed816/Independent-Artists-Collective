@@ -104,9 +104,9 @@ const EditArtworkForm = () => {
         (!isLoaded) ?
             <i className="fa-solid fa-palette art-info-loading">LOADING...</i> :
         (!user) ?
-            <div>You must login to be able to edit artwork details</div> :
+            <div className="unauthorized-user">You must login to be able to edit artwork details</div> :
         (user.id != artPieceDetails.artist_id) ?
-            <div>You are not authorized to edit this artwork</div> :
+            <div className="unauthorized-user">You are not authorized to edit this artwork</div> :
         <div>
             <div className='create-spot-form-container'>
                 <form onSubmit={handleSubmit}>

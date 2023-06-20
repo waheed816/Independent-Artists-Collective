@@ -30,7 +30,7 @@ function SignupFormModal() {
 	};
 
 	return (
-		<>
+		<div className="login-form-modal">
 			<h1>Sign Up</h1>
 			<form onSubmit={handleSubmit}>
 				<ul>
@@ -38,45 +38,63 @@ function SignupFormModal() {
 						<li key={idx}>{error}</li>
 					))}
 				</ul>
-				<label>
-					Email
-					<input
-						type="text"
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
-					Username
-					<input
-						type="text"
-						value={username}
-						onChange={(e) => setUsername(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
+				<div>
+					<div>
+						Email
+					</div>
+					<div className="login-input-div">
+						<input
+							className="login-form-inputs"
+							type="text"
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+							required
+						/>
+					</div>
+				</div>
+				<div>
+					<div>
+						Username
+					</div>
+					<div className="login-input-div">
+						<input
+							className="login-form-inputs"
+							type="text"
+							value={username}
+							onChange={(e) => setUsername(e.target.value)}
+							required
+						/>
+					</div>
+				</div>
+				<div>
 					Password
-					<input
-						type="password"
-						value={password}
-						onChange={(e) => setPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<label>
+					<div className="login-input-div">
+						<input
+							className="login-form-inputs"
+							type="password"
+							value={password}
+							onChange={(e) => setPassword(e.target.value)}
+							required
+						/>
+					</div>
+				</div>
+				<div>
 					Confirm Password
-					<input
-						type="password"
-						value={confirmPassword}
-						onChange={(e) => setConfirmPassword(e.target.value)}
-						required
-					/>
-				</label>
-				<button type="submit">Sign Up</button>
+					<div className="login-input-div">
+						<input
+							className="login-form-inputs"
+							type="password"
+							value={confirmPassword}
+							onChange={(e) => setConfirmPassword(e.target.value)}
+							required
+						/>
+					</div>
+				</div>
+				<div className="login-form-button">
+					<button  type="submit">SIGN UP</button>
+				</div>
 			</form>
-		</>
+		</div>
 	);
 }
 

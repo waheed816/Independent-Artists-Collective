@@ -16,6 +16,8 @@ const ManageProfileAndArtPage = () => {
 
     const { artistId } = useParams();
 
+    const user = useSelector((state) => state.session.user)
+
     const history = useHistory();
 
     const { closeModal } = useModal();
@@ -39,13 +41,17 @@ const ManageProfileAndArtPage = () => {
 
         fetchData();
 
-    }, [dispatch]);
+    }, [dispatch, user]);
 
 
 
 
     return (
         (!isLoaded) ? <i className="fa-solid fa-palette art-info-loading">LOADING...</i> :
+        (!user) ?
+            <div className="unauthorized-user">You must login to be able to edit artwork details</div> :
+        (user.id != artistDetails.id) ?
+            <div className="unauthorized-user">You are not authorized to edit this artwork</div> :
         <div className="artist-details-page-container">
             <h1 className="edit-profile">EDIT PROFILE</h1>
             <div className="edit-artist-details-container-parent">
@@ -76,7 +82,7 @@ const ManageProfileAndArtPage = () => {
                                         <div>PHONE: {artistDetails.phone}</div>
                                     </div>
                                 }
-                                <button >EDIT YOUR PROFILE</button>
+                                {/* <button >EDIT YOUR PROFILE</button> */}
                             </div>
                         </div>
                     </div>

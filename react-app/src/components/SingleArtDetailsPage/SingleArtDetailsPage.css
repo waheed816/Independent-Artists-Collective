@@ -1,5 +1,5 @@
 .art-info-loading {
-    display: flex;
+    display: none;
     color: blue;
     margin-left: 50%;
     margin-right: 50%;
@@ -23,17 +23,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border: 1em solid black;
-    margin: 2em;
-    padding: 2em;
-
+    border: 1em solid lightsteelblue;
+    margin: 11em;
+    padding: 7em;
+    font-size: 0.5vw;
 }
 
 
 
 .art-piece-details-image{
-    max-width: 75vw;
-    max-height: 85vh;
+    max-width: 75vh;
+    max-height: 75vh;
+    box-shadow:0 0 3em lightsteelblue;
+
     /* margin-bottom: 33px; */
 
 }
@@ -44,16 +46,47 @@
 
 } */
 
+button {
+    font-size: 1.5vw;
+    background-color: lightsteelblue;
+    color: rgba(24, 24, 24);
+    /* font-weight:bold; */
+    /* border: 0.3em solid black; */
+    border-radius: 0.3em;
+    font-family:'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    border: 0.1em solid white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.3);
+    transform: translateY(0);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    z-index: 0;
+    width: max-content;
+}
+
+
+
+
+/* button:hover {
+    transform: translateY(4px);
+} */
+
+/* button:active {
+    transform: translateY(0);
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.3);
+    transform: scale(0.9);
+  } */
 
 
 
 .art-piece-details-info-container{
-    /* margin-bottom: 33px; */
+
     /* max-width: 25vw; */
     max-height: 85vh;
 
     overflow-x: hidden;
-    /* justify-content: center; */
+    font-size: 1vw;
+    padding-left: 1.5em;
 
 }
 
@@ -72,20 +105,71 @@
     padding-bottom: 7px;
 }
 
+.single-art-details-page-container{
+    font-size: 0.5vw;
+}
 
-@media (max-width: 1385px) {
-    .art-piece-details-container {
-      flex-direction: column;
-      max-width: 35vw;
-      /* justify-self: center; */
+
+@media (max-width: 999px) {
+    /* .art-piece-details-container {
+        display: flex;
+        flex-direction: column;
+        max-width: 75vw;
+        font-size: 1.5vw;
+        justify-content: space-between;
+
+    } */
+
+    .art-piece-details-container{
+        display: flex;
+        flex-direction: column;
+        max-width: 75vw;
+        justify-content: space-between;
+        gap: 13px;
+        /* justify-content: center; */
+        align-items: center;
+        border: 1em solid lightsteelblue;
+        margin: 7em;
+        padding: 7em;
+        font-size: 0.5vw;
+    }
+
+    .art-piece-details-info-container {
+        display: flex;
+        flex-direction: row;
+        gap: 7vw;
+        font-size: 1.5vw;
+        margin-left: 2em;
+        margin-right: 2em;
+        overflow: hidden;
+
+
     }
 
     .single-art-details-page-container{
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        justify-content: space-between;
         align-items: center;
+        font-size: 0.5vw;
+        padding-top: 9em;
+    }
 
+    .art-piece-details-image{
+        max-width: 75vw;
+        margin-top: 5em;
+        max-height: 75vh;
+        box-shadow:0 0 3em lightsteelblue;
+
+        /* margin-bottom: 33px; */
 
     }
+
+
+
+    /* .artwork-details-wishlist-option-container{
+        display: flex;
+        flex-direction: row;
+    } */
+
 }
