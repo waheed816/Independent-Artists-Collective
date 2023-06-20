@@ -1,11 +1,11 @@
 .create-spot-form-container{
-    font-family:  'Circular', 'BlinkMacSystemFont', 'Roboto', 'Helvetica Neue', sans-serif;
+    font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     display: flex;
     justify-content: center;
     padding-left: 185px;
     padding-right: 170px;
     margin: auto;
-    color: navy;
+    color: lightsteelblue;
     max-width: 555px;
 }
 
@@ -59,7 +59,7 @@
 }
 
 .border-line {
-    border-bottom: 2px solid navy;
+    border-bottom: 2px solid lightsteelblue;
     margin-top: 13px;
     margin-bottom: 21px;
 }
@@ -94,7 +94,7 @@
     justify-content: center;
     border: solid 1px navy;
     border-radius: 13px;
-    background-color: navy;
+    /* background-color: navy; */
     color: white;
     font-size: 17px;
     font-weight: bold;

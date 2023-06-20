@@ -125,7 +125,7 @@ const ArtistProfileForm = () => {
                             <input
                                 className='input-fields'
                                 type='text'
-                                placeholder="City, State of birth OR place where you grew up"
+                                placeholder="City, State where you grew up"
                                 value={origin}
                                 onChange={(e) => setOrigin(e.target.value)}
                             />

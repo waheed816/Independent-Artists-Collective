@@ -1,24 +1,29 @@
 .artwork-description-modal{
-    width: 33vw;
+    max-width: 53vw;
+    max-height: 75vh;
     padding: 1.5em;
     display: flex;
-  flex-direction: column;
-  align-items: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    border: solid 0.7em lightsteelblue;
+    background-color: rgba(24, 24, 24);
 }
 
 
 .art-piece-details-description-container{
-    max-height: 33vh;
+    max-height: 43vh;
     overflow-y: auto;
     overflow-x: hidden;
+    padding-right: 0.7em;
 }
 
 
 .artwork-description-image{
-    max-height: 33vh;
-    max-width: 33vw;
+    max-height: 43vh;
+    max-width: 53vw;
     justify-content: center;
-
     margin: auto;
-    margin-bottom: 0.7em;
+    margin-bottom: 0.8em;
+    box-shadow: 0 0 1.3em lightsteelblue;
 }

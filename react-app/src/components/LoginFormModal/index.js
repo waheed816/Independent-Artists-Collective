@@ -16,41 +16,54 @@ function LoginFormModal() {
     const data = await dispatch(login(email, password));
     if (data) {
       setErrors(data);
+      console.log(errors)
     } else {
         closeModal()
     }
   };
 
   return (
-    <>
-      <h1>Log In</h1>
+    <div className="login-form-modal">
+      <h1 className="login-title">Log In</h1>
       <form onSubmit={handleSubmit}>
         <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
         </ul>
-        <label>
-          Email
-          <input
-            type="text"
-            value={email}
-            onChange={(e) => setEmail(e.target.value)}
-            required
-          />
-        </label>
-        <label>
-          Password
-          <input
-            type="password"
-            value={password}
-            onChange={(e) => setPassword(e.target.value)}
-            required
-          />
-        </label>
-        <button type="submit">Log In</button>
+        <div>
+          <div>
+            Email
+          </div>
+          <div className="login-input-div">
+            <input
+              className="login-form-inputs"
+              type="text"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        <div>
+          <div>
+            Password
+          </div>
+          <div className="login-input-div">
+            <input
+              className="login-form-inputs"
+              type="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+            />
+          </div>
+        </div>
+        <div className="login-form-button">
+          <button type="submit">LOGIN</button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

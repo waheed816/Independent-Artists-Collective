@@ -19,6 +19,12 @@
 }
 
 #modal-content {
+  /* display: flex;
+  flex-direction: column; */
   position: absolute;
-  background-color:white;
+  /* background-color: rgba(24, 24, 24); */
+  padding: 13px;
+  /* border: solid 3px lightsteelblue;
+  border-radius: 13px; */
+
 }

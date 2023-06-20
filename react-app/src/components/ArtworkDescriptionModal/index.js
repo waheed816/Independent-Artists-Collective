@@ -4,12 +4,12 @@ import "./ArtworkDescriptionModal.css"
 const ArtworkDescriptionModal = ({artworkDetails}) => {
     return(
         <div className="artwork-description-modal">
-            <div>
-                <h2>{artworkDetails.name}</h2>
-            </div>
             <div >
                 <img className="artwork-description-image" src={artworkDetails.art_image_url} alt={`${artworkDetails.name}'s image unavailable`}></img>
             </div>
+            {/* <div>
+                <h4>{artworkDetails.name}</h4>
+            </div> */}
             <div className="art-piece-details-description-container">
                 <div className="art-piece-details-description">
                     {artworkDetails.description.split('\n\n').map((paragraph, index) => (
