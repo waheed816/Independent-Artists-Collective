@@ -22,6 +22,19 @@ function LoginFormModal() {
     }
   };
 
+  const demoUser = () => {
+    setEmail("demo@aa.io");
+    setPassword("password");
+    dispatch(login("demo@aa.io", "password"))
+      .then(closeModal)
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) {
+          setErrors(["The provided credentials were invalid."]);
+        }
+      });
+  }
+
   return (
     <div className="login-form-modal">
       <h1 className="login-title">Log In</h1>
@@ -61,6 +74,9 @@ function LoginFormModal() {
         </div>
         <div className="login-form-button">
           <button type="submit">LOGIN</button>
+        </div>
+        <div className="login-form-button">
+          <button className="demo-user-button" onClick={demoUser}>DEMO LOGIN</button>
         </div>
       </form>
     </div>
