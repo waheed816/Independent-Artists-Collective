@@ -52,8 +52,9 @@ const ManageProfileAndArtPage = () => {
             <div className="unauthorized-user">You must login to be able to edit artwork details</div> :
         (user.id != artistDetails.id) ?
             <div className="unauthorized-user">You are not authorized to edit this artwork</div> :
+        (!artPieceDetails.length) ? <div>YOU HAVE NOT POSTED ANY ARTWORK</div> :
         <div className="artist-details-page-container">
-            <h1 className="edit-profile">EDIT PROFILE</h1>
+            {/* <h1 className="edit-profile">EDIT PROFILE</h1>
             <div className="edit-artist-details-container-parent">
                 <h1>{artistDetails.name}</h1>
                 <div className="edit-artist-details-container">
@@ -82,14 +83,15 @@ const ManageProfileAndArtPage = () => {
                                         <div>PHONE: {artistDetails.phone}</div>
                                     </div>
                                 }
-                                {/* <button >EDIT YOUR PROFILE</button> */}
+
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> */}
             <h1 className="edit-title">EDIT ART</h1>
             <div className="landing-page-contain">
+
                 {artPieceDetails.map(artPieceDetails => {
                         return (
                             <div className="edit-artworks-parent">
