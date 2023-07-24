@@ -38,7 +38,7 @@ def update_user_artist_profile(artist_id):
 
     new_artist_profile = request.get_json()
 
-    single_artist_details.artist = True
+    single_artist_details.artist = new_artist_profile['artist']
     single_artist_details.bio = new_artist_profile['description']
     single_artist_details.contact_email = new_artist_profile['email']
     single_artist_details.current_location = new_artist_profile['currentLocation']
@@ -47,6 +47,7 @@ def update_user_artist_profile(artist_id):
     single_artist_details.origin = new_artist_profile['origin']
     single_artist_details.phone = new_artist_profile['phone']
     single_artist_details.quote = new_artist_profile['quote']
+    single_artist_details.artist_image_url = new_artist_profile['img1url']
 
     # print('NEW ARTIST PROFILE-------->>>', new_artist_profile)
 

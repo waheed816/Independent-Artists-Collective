@@ -24,7 +24,7 @@ const EditArtworkForm = () => {
     const [errors, setErrors] = useState({});
     const [isLoaded, setIsLoaded] = useState(false)
 
-    console.log("ART PIECE DETAILS --->>>", artPieceDetails)
+    // console.log("ART PIECE DETAILS --->>>", artPieceDetails)
 
     useEffect(() => {
         if(artPieceDetails){

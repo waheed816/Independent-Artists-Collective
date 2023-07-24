@@ -42,6 +42,20 @@ def edit_artwork_details(artworkId):
 
     return art_piece_details.to_dict()
 
+@art_pieces_routes.route('/deleteAllArtpiecesByArtist', methods=['DELETE'])
+@login_required
+def delete_all_art_pieces_by_artist():
+    all_art_pieces_ids = request.get_json()
+
+    # print('============>>>>>>>>>>>>>>>', all_art_pieces_ids)
+
+    for artId in all_art_pieces_ids:
+        art_piece = Art_Piece.query.get(artId)
+        db.session.delete(art_piece)
+        db.session.commit()
+
+    return {'message': 'Artist Art Pieces Deleted'}
+
 @art_pieces_routes.route('/deleteArtpiece/<int:artworkId>', methods=['DELETE'])
 @login_required
 def delete_artpiece(artworkId):

@@ -80,11 +80,27 @@ export const thunkDeleteArtpiece = (artworkId, artist_id) => async (dispatch) =>
 		headers: {
             'Content-Type': 'application/json'
         },
+
 	})
     if(response.ok){
         dispatch(thunkGetAllArtPiecesByArtist(artist_id))
         return
     }
+}
+
+export const thunkDeleteAllArtpiecesByArtist = (allArtPiecesIds) => async (dispatch) => {
+
+	const response = await fetch('/api/art_pieces/deleteAllArtpiecesByArtist', {
+		method: 'DELETE',
+		headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(allArtPiecesIds)
+	})
+    // if(response.ok){
+    //     dispatch(thunkGetAllArtPiecesByArtist(artist_id))
+    //     return
+    // }
 }
 
 

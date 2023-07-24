@@ -2,9 +2,12 @@ import React from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { useHistory, NavLink } from "react-router-dom";
 import { thunkGetSingleArtist } from "../../store/artists";
 import { thunkGetAllArtPiecesByArtist } from "../../store/art_pieces";
+import OpenModalButton from "../OpenModalButton";
+import { useModal } from "../../context/Modal";
+import DeleteProfileModal from "../DeleteProfileModal";
 import "./ArtistDetailsPage.css"
 
 
@@ -14,11 +17,17 @@ const ArtistDetailsPage = () => {
 
     const { artistId } = useParams();
 
+    const { closeModal } = useModal();
+
+    const user = useSelector((state) => state.session.user)
+
     const artistDetails = useSelector((state) => state.artists.singleArtist)
 
     const allArtPiecesArray = Object.values(useSelector((state) => state.art_pieces.allArtPieces));
 
     const [isLoaded, setIsLoaded] = useState(false)
+
+    const history = useHistory()
 
     useEffect( () => {
 
@@ -32,6 +41,12 @@ const ArtistDetailsPage = () => {
         fetchData();
 
     }, [dispatch]);
+
+    const handleEditProfile = (e) => {
+        e.preventDefault();
+        // history.push('/')
+        history.push('/editArtistProfileForm')
+    }
 
     return(
         (!isLoaded) ? <i className="fa-solid fa-palette art-info-loading">LOADING...</i> :
@@ -51,7 +66,7 @@ const ArtistDetailsPage = () => {
                     <div>about the artist:</div>
                     <div>{artistDetails.bio}</div>
                     <div>
-                        <div>EMAIL: {artistDetails.email}</div>
+                        <div>EMAIL: {artistDetails.contact_email}</div>
                         <div className="artist-details-contact-info-container">
                             {artistDetails.instagram &&
                                 <div>
@@ -65,6 +80,27 @@ const ArtistDetailsPage = () => {
                             }
                         </div>
                     </div>
+                    {/* <div>
+                            <button>EDIT PROFILE</button>
+                    </div> */}
+                    {user && user.id == artistId &&
+                        <div>
+                            <div>
+                                <button onClick={handleEditProfile}>EDIT PROFILE</button>
+                            </div>
+                            <div>
+                                <OpenModalButton
+                                    buttonText="DELETE PROFILE"
+                                    onItemClick={closeModal}
+                                    modalComponent={<DeleteProfileModal />}
+                                />
+                            </div>
+                        </div>
+
+
+                    }
+
+
                 </div>
             </div>
             <div className='border-line'></div>
