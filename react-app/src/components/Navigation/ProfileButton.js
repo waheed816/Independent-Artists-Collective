@@ -55,9 +55,17 @@ function ProfileButton({ user }) {
             <div>{user.username}</div>
             <div>{user.email}</div>
             {user.artist &&
+            <div>
               <div >
-                <NavLink exact to = {`/artist/${user.id}/manageProfileAndArt`} className="edit-artwork-link" onClick={closeMenu}>EDIT YOUR ARTWORK</NavLink>
+                <NavLink exact to = {`/artist/${user.id}/manageProfileAndArt`} className="edit-artwork-link" onClick={closeMenu}>YOUR ARTWORK</NavLink>
               </div>
+              <div >
+                <NavLink exact to = {`/artist/${user.id}`} className="edit-artwork-link" onClick={closeMenu}>YOUR PROFILE</NavLink>
+              </div>
+
+            </div>
+
+
             }
             <div>
               <button onClick={handleLogout}>

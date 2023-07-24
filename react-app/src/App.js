@@ -14,6 +14,7 @@ import ArtistProfileForm from "./components/ArtistProfileForm";
 import PostArtworkForm from "./components/PostArtworkForm";
 import ManageProfileAndArtPage from "./components/ManageProfileAndArtPage";
 import EditArtworkForm from "./components/EditArtworkForm";
+import EditArtistProfileForm from "./components/EditArtistProfileForm";
 
 function App() {
   const dispatch = useDispatch();
@@ -50,6 +51,9 @@ function App() {
           </Route>
           <Route path="/artist/:artistId/manageProfileAndArt">
             <ManageProfileAndArtPage />
+          </Route>
+          <Route path="/editArtistProfileForm">
+            <EditArtistProfileForm/>
           </Route>
           <Route path="/artist/:artistId">
             <ArtistDetailsPage />

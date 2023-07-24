@@ -1,16 +1,21 @@
 import React from "react";
-import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useHistory, useParams } from 'react-router-dom';
+import { useState, useEffect } from 'react';
+import { useDispatch, useSelector  } from 'react-redux';
+import { useHistory } from 'react-router-dom';
+import { thunkGetSingleArtist } from "../../store/artists";
 import { thunkCreateUserArtistProfile } from "../../store/artists";
-import "./ArtistProfileForm.css"
 
-const ArtistProfileForm = () => {
+
+const EditArtistProfileForm = () => {
 
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const { userId } = useParams();
+    const artistDetails = useSelector((state) => state.artists.singleArtist)
+
+    const user = useSelector((state) => state.session.user)
+
+    const userId = user.id
 
     const [name, setName] = useState('')
     const [origin, setOrigin] = useState('');
@@ -22,6 +27,7 @@ const ArtistProfileForm = () => {
     const [phone, setPhone] = useState('');
     const [img1url, setImg1url] = useState('');
     const [errors, setErrors] = useState({});
+    const [isLoaded, setIsLoaded] = useState(false);
 
     function validateEmail(email) {
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -30,6 +36,33 @@ const ArtistProfileForm = () => {
           return true
         }
     }
+
+    useEffect(() => {
+        if(artistDetails){
+            setName(artistDetails.name);
+            setOrigin(artistDetails.origin);
+            setCurrentLocation(artistDetails.current_location);
+            setDescription(artistDetails.bio);
+            setQuote(artistDetails.quote);
+            setEmail(artistDetails.contact_email);
+            setInstagram(artistDetails.instagram);
+            setPhone(artistDetails.phone);
+            setImg1url(artistDetails.artist_image_url);
+        }
+    }, [artistDetails])
+
+    useEffect(() => {
+
+        const fetchData = async() => {
+            dispatch(thunkGetSingleArtist(userId));
+            setIsLoaded(true);
+        }
+
+        fetchData();
+
+    }, [dispatch]);
+
+
 
     const handleSubmit = async(e) => {
 
@@ -48,7 +81,7 @@ const ArtistProfileForm = () => {
             allErrors.email = "Invalid email address"
         }
 
-        if(!img1url){
+        if(!img1url.length){
             allErrors.img1url = "Image URL required"
         } else if(!img1url.endsWith('.png') && !img1url.endsWith('.jpg') && !img1url.endsWith('.jpeg')){
             allErrors.img1url = "Image URL must end in .png, .jpg, or .jpeg"
@@ -80,8 +113,8 @@ const ArtistProfileForm = () => {
 
             const newArtistDetails = await dispatch(thunkCreateUserArtistProfile(userId, userArtistProfile))
 
-            // console.log('NEW ARTIST DETAILS------->>>', newArtistDetails)
-            // console.log('USER ARTIST PROFILE------->>>', userArtistProfile)
+        //     // console.log('NEW ARTIST DETAILS------->>>', newArtistDetails)
+        //     // console.log('USER ARTIST PROFILE------->>>', userArtistProfile)
 
             history.push(`/artist/${userId}`)
         }
@@ -89,13 +122,14 @@ const ArtistProfileForm = () => {
     }
 
     return(
+        (!isLoaded) ? <i className="fa-solid fa-palette art-info-loading">LOADING...</i> :
         <div>
             <div className='create-spot-form-container'>
                 <form onSubmit={handleSubmit}>
                     <div className='section-inputs'>
-                        <h1>Create your Artist Profile</h1>
+                        <h1>Edit your Artist Profile</h1>
                         <div className='border-line'></div>
-                        <h3>Complete your artist profile and start posting your artwork!</h3>
+                        {/* <h3>Complete your artist profile and start posting your artwork!</h3> */}
                         <p>
                             <strong>The information you provide on your profile will help convey to fellow artists and other users your unique persona and journey as an artist so that they may want to connect with you for collaboration purposes or to commision and purchase your artwork.</strong>
                         </p>
@@ -244,13 +278,13 @@ const ArtistProfileForm = () => {
                     </div>
                     <div className='border-line'></div>
                     <div className='submit-button-container'>
-                        <button type="submit" className='create-spot-button'>SUBMIT ARTIST PROFILE</button>
+                        <button type="submit" className='create-spot-button'>SUBMIT EDITED PROFILE</button>
                     </div>
                 </form>
             </div>
         </div>
     )
-
 }
 
-export default ArtistProfileForm;
+
+export default EditArtistProfileForm;
