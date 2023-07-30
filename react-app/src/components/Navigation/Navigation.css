@@ -38,6 +38,10 @@ body {
 
 }
 
+.recruiterLinks{
+  color: lightsteelblue;
+}
+
 .edit-artwork-link{
   color: lightsteelblue;
   /* text-decoration: none; */

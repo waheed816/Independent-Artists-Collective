@@ -27,7 +27,13 @@ const DeleteArtModal = ({artworkDetails}) => {
         <div className="delete-art-modal-container">
             <div>DELETE THIS ARTWORK?</div>
             <div className="delete-art-piece-image-container">
-                <img className="delete-art-piece-image" src={artworkDetails.art_image_url} alt={`${artworkDetails.name}'s image unavailable`}></img>
+                <img className="delete-art-piece-image" src={artworkDetails.art_image_url}
+                    onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src = "https://st3.depositphotos.com/26272052/33085/v/600/depositphotos_330852614-stock-illustration-color-delete-folder-icon-isolated.jpg"
+                    }}
+                    alt={`${artworkDetails.name}'s image unavailable`}>
+                </img>
             </div>
             <div>
                 <button onClick={deleteArtpiece}>YES (delete artwork)</button>

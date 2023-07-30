@@ -6,6 +6,7 @@ import './Navigation.css';
 import OpenModalButton from "../OpenModalButton";
 import LoginFormModal from "../LoginFormModal";
 import { useModal } from "../../context/Modal";
+import TechInfoModal from '../TechInfoModal';
 
 function Navigation({ isLoaded }){
 	const sessionUser = useSelector(state => state.session.user);
@@ -31,6 +32,38 @@ function Navigation({ isLoaded }){
 							</div>
 						</div>
 					</NavLink>
+					<a
+						href="https://github.com/waheed816/worcester-artists-united"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="recruiterLinks"
+					>
+						<i class="fa-brands fa-github"> GITHUB</i>
+
+					</a>
+					<a
+						href="https://www.linkedin.com/in/waheed816/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="recruiterLinks"
+					>
+						<i class="fa-brands fa-linkedin"> LinkedIn</i>
+					</a>
+					<a
+						href="https://waheed816.github.io/"
+						target="_blank"
+						rel="noopener noreferrer"
+						className="recruiterLinks"
+					>
+						<i class="fa-solid fa-folder-open"> PORTFOLIO</i>
+
+					</a>
+					<OpenModalButton
+						buttonText = <i class="fa-solid fa-gears">TECH INFO</i>
+						onItemClick={closeModal}
+						modalComponent={<TechInfoModal />}
+					/>
+					{/* <i class="fa-solid fa-list-ul"> TECH INFO</i> */}
 					<div>
 						<div className='navigation-bar-right-side'>
 							<div className='second-to-right-side-div'>

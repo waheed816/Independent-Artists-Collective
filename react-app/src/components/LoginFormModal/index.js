@@ -8,15 +8,16 @@ function LoginFormModal() {
   const dispatch = useDispatch();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
   const { closeModal } = useModal();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
+      console.log("DATA ERROR FROM BACKEND", data)
       setErrors(data);
-      console.log(errors)
+      console.log("ERROR ON FRONT END", errors)
     } else {
         closeModal()
     }
@@ -39,11 +40,12 @@ function LoginFormModal() {
     <div className="login-form-modal">
       <h1 className="login-title">Log In</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
+        {/* <ul>
           {errors.map((error, idx) => (
             <li key={idx}>{error}</li>
           ))}
-        </ul>
+        </ul> */}
+
         <div>
           <div>
             Email
@@ -56,6 +58,9 @@ function LoginFormModal() {
               onChange={(e) => setEmail(e.target.value)}
               required
             />
+            <p className='create-spot-errors'>
+              {errors.email}
+            </p>
           </div>
         </div>
         <div>
@@ -70,6 +75,11 @@ function LoginFormModal() {
               onChange={(e) => setPassword(e.target.value)}
               required
             />
+            {!errors.email &&
+              <p className='create-spot-errors'>
+                {errors.password}
+              </p>
+            }
           </div>
         </div>
         <div className="login-form-button">

@@ -37,7 +37,14 @@ const AllArtistsPage = () => {
                         <div key={artist.id} title={artist.name} className="landing-page-art-piece-card">
                             <NavLink to={`/artist/${artist.id}`}>
                                 <div className="all-artists-artist image container">
-                                    <img className="landing-page-art-image" src={artist.artist_image_url} alt={`${artist.name}'s image unavailable`}></img>
+                                    <img className="landing-page-art-image" src={artist.artist_image_url}
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = "https://hatcherymatters.com/wp-content/uploads/2020/10/hatcherymatters_fondo-4.png"
+                                        }}
+                                        alt="{`${artist.name}'s image unavailable`}">
+
+                                    </img>
                                 </div>
                             </NavLink>
                             <div className="all-artists-page-artist-details">

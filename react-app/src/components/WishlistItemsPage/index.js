@@ -47,7 +47,13 @@ const WishlistItemsPage = () => {
                                 <div className="landing-page-art-piece-artist-info wishlist-artist-info">
                                     <div className="landing-page-artist-image-container">
                                         <NavLink to={`/artist/${art_piece.artist_id}`} className='landing-page-artist-navlink'>
-                                            <img className="landing-page-artist-image" src={art_piece.artist_image} alt={`${art_piece.artist_name}'s image unavailable`}></img>
+                                            <img className="landing-page-artist-image" src={art_piece.artist_image}
+                                                onError={(e) => {
+                                                    e.target.onerror = null;
+                                                    e.target.src = "https://www.nicepng.com/png/detail/73-730154_open-default-profile-picture-png.png"
+                                                }}
+                                                alt={`${art_piece.artist_name}'s image unavailable`}>
+                                            </img>
                                         </NavLink>
                                     </div>
                                     <div className="landing-page-artist-name">
@@ -60,7 +66,13 @@ const WishlistItemsPage = () => {
                             </div>
                             <NavLink to={`/art_pieces/${art_piece.id}`}>
                                 {/* <div className="landing-page-art-name">{`${art_piece.name}`}</div> */}
-                                <img title={art_piece.name} className="landing-page-art-image" src={art_piece.art_image_url} alt={`${art_piece.name}'s image unavailable`}></img>
+                                <img title={art_piece.name} className="landing-page-art-image" src={art_piece.art_image_url}
+                                    onError={(e) => {
+                                        e.target.onerror = null;
+                                        e.target.src = "https://st3.depositphotos.com/26272052/33085/v/600/depositphotos_330852614-stock-illustration-color-delete-folder-icon-isolated.jpg"
+                                    }}
+                                    alt={`${art_piece.name}'s image unavailable`}>
+                                </img>
                             </NavLink>
                             <div className="remove-from-wishlist-button">
                                 <OpenModalButton

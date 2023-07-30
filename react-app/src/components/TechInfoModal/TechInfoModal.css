@@ -1,0 +1,24 @@
+.sql-alchemy{
+	/* margin-left: 20px; */
+	height: 28px;
+	width: 100px;
+	object-fit: cover;
+	background-color: gold;
+
+}
+
+.javaScript img:not(:last-child){
+    margin-right: 10px;
+}
+
+.python img:not(:last-child){
+    margin-right: 10px;
+}
+
+.htmlCss img:not(:last-child){
+    margin-right: 10px;
+}
+
+.nodePostgres img:not(:last-child){
+    margin-right: 10px;
+}
