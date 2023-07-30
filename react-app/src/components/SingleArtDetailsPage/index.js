@@ -73,14 +73,27 @@ const SingleArtDetailsPage = () => {
         <div className="single-art-details-page-container">
             <div className="art-piece-details-container">
                 <div className="art-piece-details-image-container">
-                    <img className="art-piece-details-image" src={artPieceDetails.art_image_url} alt={`${artPieceDetails.name}'s image unavailable`}></img>
+                    <img className="art-piece-details-image" src={artPieceDetails.art_image_url}
+                        onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = "https://st3.depositphotos.com/26272052/33085/v/600/depositphotos_330852614-stock-illustration-color-delete-folder-icon-isolated.jpg"
+                        }}
+                        alt={`${artPieceDetails.name}'s image unavailable`}>
+                    </img>
                 </div>
                 <div className="art-piece-details-info-container">
                     <div>
                         <div className="landing-page-art-piece-artist-info">
                             <div className="landing-page-artist-image-container">
                                 <NavLink to={`/artist/${artPieceDetails.artist_id}`} className='landing-page-artist-navlink'>
-                                    <img className="landing-page-artist-image" src={artPieceDetails.artist_image} alt={`${artPieceDetails.artist_name}'s image unavailable`}></img>
+                                    <img className="landing-page-artist-image" src={artPieceDetails.artist_image}
+                                        onError={(e) => {
+                                            e.target.onerror = null;
+                                            e.target.src = "https://hatcherymatters.com/wp-content/uploads/2020/10/hatcherymatters_fondo-4.png"
+                                        }}
+                                        alt={`${artPieceDetails.artist_name}'s image unavailable`}>
+
+                                    </img>
                                 </NavLink>
                             </div>
                             <div className="landing-page-artist-name">

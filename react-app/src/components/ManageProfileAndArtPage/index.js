@@ -102,7 +102,13 @@ const ManageProfileAndArtPage = () => {
                                         </div>
                                         <div className="edit-piece-details-container">
                                             <div className="art-piece-details-image-container">
-                                                <img className="art-piece-details-image" src={artPieceDetails.art_image_url} alt={`${artPieceDetails.name}'s image unavailable`}></img>
+                                                <img className="art-piece-details-image" src={artPieceDetails.art_image_url}
+                                                    onError={(e) => {
+                                                        e.target.onerror = null;
+                                                        e.target.src = "https://st3.depositphotos.com/26272052/33085/v/600/depositphotos_330852614-stock-illustration-color-delete-folder-icon-isolated.jpg"
+                                                    }}
+                                                    alt={`${artPieceDetails.name}'s image unavailable`}>
+                                                </img>
                                             </div>
                                             <div className="edit-piece-details-info-container">
                                                 <div>

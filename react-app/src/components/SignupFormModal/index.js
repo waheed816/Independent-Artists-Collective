@@ -10,7 +10,7 @@ function SignupFormModal() {
 	const [username, setUsername] = useState("");
 	const [password, setPassword] = useState("");
 	const [confirmPassword, setConfirmPassword] = useState("");
-	const [errors, setErrors] = useState([]);
+	const [errors, setErrors] = useState({});
 	const { closeModal } = useModal();
 
 	const handleSubmit = async (e) => {
@@ -23,9 +23,7 @@ function SignupFormModal() {
 				closeModal();
 			}
 		} else {
-			setErrors([
-				"Confirm Password field must be the same as the Password field",
-			]);
+			setErrors({"password": "Passwords do not match"});
 		}
 	};
 
@@ -33,11 +31,11 @@ function SignupFormModal() {
 		<div className="login-form-modal">
 			<h1>Sign Up</h1>
 			<form onSubmit={handleSubmit}>
-				<ul>
+				{/* <ul>
 					{errors.map((error, idx) => (
 						<li key={idx}>{error}</li>
 					))}
-				</ul>
+				</ul> */}
 				<div>
 					<div>
 						Email
@@ -50,6 +48,9 @@ function SignupFormModal() {
 							onChange={(e) => setEmail(e.target.value)}
 							required
 						/>
+						<p className='create-spot-errors'>
+                			{errors.email}
+              			</p>
 					</div>
 				</div>
 				<div>
@@ -64,6 +65,9 @@ function SignupFormModal() {
 							onChange={(e) => setUsername(e.target.value)}
 							required
 						/>
+						<p className='create-spot-errors'>
+                			{errors.username}
+              			</p>
 					</div>
 				</div>
 				<div>
@@ -76,6 +80,9 @@ function SignupFormModal() {
 							onChange={(e) => setPassword(e.target.value)}
 							required
 						/>
+						<p className='create-spot-errors'>
+                			{errors.password}
+              			</p>
 					</div>
 				</div>
 				<div>
@@ -88,6 +95,9 @@ function SignupFormModal() {
 							onChange={(e) => setConfirmPassword(e.target.value)}
 							required
 						/>
+						<p className='create-spot-errors'>
+                			{errors.password}
+              			</p>
 					</div>
 				</div>
 				<div className="login-form-button">

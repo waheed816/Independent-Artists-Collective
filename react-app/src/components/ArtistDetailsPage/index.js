@@ -54,7 +54,14 @@ const ArtistDetailsPage = () => {
             <h1>{artistDetails.name}</h1>
             <div className="artist-details-container">
                 <div className="artist-details-image-container">
-                    <img className="artist-details-image" src={artistDetails.artist_image_url} alt={`${artistDetails.name}'s image unavailable`}></img>
+                    <img className="artist-details-image" src={artistDetails.artist_image_url}
+                        onError={(e) => {
+                            e.target.onerror = null;
+                            e.target.src = "https://hatcherymatters.com/wp-content/uploads/2020/10/hatcherymatters_fondo-4.png"
+                        }}
+                        alt={`${artistDetails.name}'s image unavailable`}>
+
+                    </img>
                 </div>
                 <div className="artist-details-info-container">
                     <div>origin:</div>
@@ -110,7 +117,12 @@ const ArtistDetailsPage = () => {
                         return (
                             <div key = {art_piece.id} className="landing-page-art-piece-card">
                                 <NavLink to={`/art_pieces/${art_piece.id}`}>
-                                    <img title={art_piece.name} className="landing-page-art-image" src={art_piece.art_image_url} alt={`${art_piece.name}'s image unavailable`}></img>
+                                    <img title={art_piece.name} className="landing-page-art-image" src={art_piece.art_image_url}
+                                    onError={(e) => {
+                                        e.target.onerror = null;
+                                        e.target.src = "https://st3.depositphotos.com/26272052/33085/v/600/depositphotos_330852614-stock-illustration-color-delete-folder-icon-isolated.jpg"
+                                    }}
+                                    alt={`${art_piece.name}'s image unavailable`}></img>
                                 </NavLink>
                             </div>
 

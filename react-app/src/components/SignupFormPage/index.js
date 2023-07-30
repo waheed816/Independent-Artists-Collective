@@ -11,7 +11,7 @@ function SignupFormPage() {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
-  const [errors, setErrors] = useState([]);
+  const [errors, setErrors] = useState({});
 
   if (sessionUser) return <Redirect to="/" />;
 
@@ -23,7 +23,7 @@ function SignupFormPage() {
           setErrors(data)
         }
     } else {
-        setErrors(['Confirm Password field must be the same as the Password field']);
+        setErrors(errors.password = "Passwords do not match");
     }
   };
 
@@ -31,9 +31,9 @@ function SignupFormPage() {
     <>
       <h1>Sign Up</h1>
       <form onSubmit={handleSubmit}>
-        <ul>
+        {/* <ul>
           {errors.map((error, idx) => <li key={idx}>{error}</li>)}
-        </ul>
+        </ul> */}
         <label>
           Email
           <input
@@ -42,6 +42,7 @@ function SignupFormPage() {
             onChange={(e) => setEmail(e.target.value)}
             required
           />
+          {errors.email}
         </label>
         <label>
           Username
@@ -51,6 +52,7 @@ function SignupFormPage() {
             onChange={(e) => setUsername(e.target.value)}
             required
           />
+          {errors.username}
         </label>
         <label>
           Password
@@ -60,6 +62,7 @@ function SignupFormPage() {
             onChange={(e) => setPassword(e.target.value)}
             required
           />
+          {errors.password}
         </label>
         <label>
           Confirm Password
@@ -69,6 +72,7 @@ function SignupFormPage() {
             onChange={(e) => setConfirmPassword(e.target.value)}
             required
           />
+          {errors.password}
         </label>
         <button type="submit">Sign Up</button>
       </form>

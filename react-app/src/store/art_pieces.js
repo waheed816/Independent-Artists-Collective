@@ -153,7 +153,7 @@ export const thunkGetUserWishlistArtPieces = (userId) => async (dispatch) => {
 
 export const thunkDeleteItemFromUserWishlist = (userId, artPieceId) => async (dispatch) => {
 
-    console.log('DELETE FROM USER WISHLIST -------->>>', userId, artPieceId)
+    //console.log('DELETE FROM USER WISHLIST -------->>>', userId, artPieceId)
 
     const response = await fetch(`/api/art_pieces/wishlist/${userId}/${artPieceId}`, {
         method: 'DELETE',
@@ -169,7 +169,7 @@ export const thunkDeleteItemFromUserWishlist = (userId, artPieceId) => async (di
 
 export const thunkAddItemToUserWishlist = (userId, artPieceId) => async (dispatch) => {
 
-    console.log('ADD TO WISHLIST -------->>>', userId, artPieceId)
+    //console.log('ADD TO WISHLIST -------->>>', userId, artPieceId)
 
     const response = await fetch(`/api/art_pieces/add_to_wishlist/${userId}/${artPieceId}`, {
         method: 'POST',
