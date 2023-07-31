@@ -140,7 +140,7 @@ export const thunkGetAllArtPiecesByArtist = (artist_id) => async (dispatch) => {
 export const thunkGetUserWishlistArtPieces = (userId) => async (dispatch) => {
     const response = await fetch(`/api/art_pieces/wishlist/${userId}`)
 
-    console.log('GET USER WISHLIST -------->>>', userId)
+    //console.log('GET USER WISHLIST -------->>>', userId)
 
     if(response.ok) {
         const art_pieces = await response.json();

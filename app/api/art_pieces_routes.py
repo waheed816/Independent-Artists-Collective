@@ -126,7 +126,7 @@ def get_all_art_pieces_by_artist(artist_id):
 @login_required
 def get_all_user_wishlist_art_pieces(userId):
 
-    print('GET USER WISHLIST------>>>>>>>>>>>', userId)
+    #print('GET USER WISHLIST------>>>>>>>>>>>', userId)
 
     wishlist_user = User.query.get(userId)
 
@@ -160,7 +160,7 @@ def get_all_user_wishlist_art_pieces(userId):
 @login_required
 def delete_wishlist_item(userId, artPieceId):
 
-    print('DELETE USER WISHLIST------>>>>>>>>>>>', userId, artPieceId)
+    #print('DELETE USER WISHLIST------>>>>>>>>>>>', userId, artPieceId)
 
     db.session.query(Wishlist_Item).filter_by(wishlist_user_id=userId, wishlist_item_id=artPieceId).delete()
     db.session.commit()
@@ -172,7 +172,7 @@ def delete_wishlist_item(userId, artPieceId):
 @login_required
 def add_item_to_user_wishlist(userId, artPieceId):
 
-    print('ADD TO USER WISHLIST------>>>>>>>>>>>', userId, artPieceId)
+    #print('ADD TO USER WISHLIST------>>>>>>>>>>>', userId, artPieceId)
 
     # wishlist_item = Wishlist_Item(wishlist_user_id=userId, wishlist_item_id=artPieceId)
 

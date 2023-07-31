@@ -15,9 +15,9 @@ function LoginFormModal() {
     e.preventDefault();
     const data = await dispatch(login(email, password));
     if (data) {
-      console.log("DATA ERROR FROM BACKEND", data)
+      //console.log("DATA ERROR FROM BACKEND", data)
       setErrors(data);
-      console.log("ERROR ON FRONT END", errors)
+      //console.log("ERROR ON FRONT END", errors)
     } else {
         closeModal()
     }
