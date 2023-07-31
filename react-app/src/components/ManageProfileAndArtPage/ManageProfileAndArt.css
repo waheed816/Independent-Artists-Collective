@@ -53,7 +53,23 @@
  }
 
 
- .edit-artist-details-info-container div:nth-child(even) {
+.edit-artist-details-info-container div:nth-child(even) {
     padding-bottom: 23px;
 
-  }
+}
+
+.no-artworks-posted{
+    margin-top: 2em;
+    font-size: x-large;
+    font-weight: bold;
+    margin-left: 3em;
+    color: orange;
+}
+
+
+.no-artworks-posted > div,
+.no-artworks-posted > li {
+    padding: 10px; /* Adjust the value as needed */
+}
+
+

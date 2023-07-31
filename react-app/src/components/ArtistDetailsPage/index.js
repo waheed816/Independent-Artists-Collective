@@ -112,6 +112,11 @@ const ArtistDetailsPage = () => {
             </div>
             <div className='border-line'></div>
             <h2 className="artist-details-artworks-title">Artworks by {artistDetails.name}</h2>
+            {!allArtPiecesArray.length &&
+                <div className="no-art-to-display">
+                    {artistDetails.name} currently has no artworks posted.
+                </div>
+            }
             <div className="landing-page-container">
                 {allArtPiecesArray.map(art_piece => {
                         return (

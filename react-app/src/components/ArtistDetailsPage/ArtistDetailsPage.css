@@ -26,4 +26,11 @@
   margin-left: 13px;
 }
 
+.no-art-to-display{
+  margin-top: 1.5em;
+  margin-left: 21px;
+  color: orange;
+  font-size:x-large;
+  font-weight: bolder;
 
+}

@@ -22,3 +22,14 @@
     margin-top: 2em;
     margin-left: 2em;
 }
+
+.no-wishlist-to-display{
+    font-size: x-large;
+    font-weight: bold;
+    margin-left: 3em;
+    color: orange;
+}
+
+.no-wishlist-to-display > li {
+    padding-top: 1em;
+}

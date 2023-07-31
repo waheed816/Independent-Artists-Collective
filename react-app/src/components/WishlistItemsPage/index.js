@@ -39,6 +39,16 @@ const WishlistItemsPage = () => {
         (!isLoaded) ? <i className="fa-solid fa-palette art-info-loading">LOADING...</i> :
         <div className="landing-page-justification">
             <h1 className = "all-artists-page-title wishlist-page-title">Wishlist Gallery</h1>
+                {!allArtPiecesArray.length &&
+                    <div className="no-wishlist-to-display">
+                        There are currently no items in your wishlist.
+                        <li>
+                            <NavLink exact to={`/`}>
+                                <i className="fa-solid fa-paintbrush navigation-view-all-artists"> BROWSE ART </i>
+                            </NavLink>
+				        </li>
+                    </div>
+                }
             <div className="landing-page-container wishlist-page-container">
                 {allArtPiecesArray.map(art_piece => {
                     return (
